@@ -108,8 +108,9 @@ section.block{padding:52px 0 8px}
 .facts{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:0;font-size:14px;padding-top:10px;border-top:1px solid var(--line)}
 .facts dt{color:var(--fog)}
 .facts dd{margin:0;font-weight:600}
-.card .actions{display:flex;gap:8px;margin-top:auto}
-.card .actions .btn{flex:1}
+.card .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.card .actions .btn{flex:1 1 auto;padding:10px 12px;white-space:nowrap}
+.card .actions .btn.primary{flex:1 1 150px}
 
 /* Photo gallery */
 .ph{position:relative;aspect-ratio:1/1;background:var(--paper-2);overflow:hidden}
