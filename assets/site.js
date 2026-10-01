@@ -1,5 +1,5 @@
 /* Shared logic for the client site. Catalog data lives in data.js (rewritten every morning from the internal tracker). */
-const SITE = {name: "izkanady.ru", word: "izkanady", tld: ".ru"};
+const SITE = {name: "Из Канады.ру", word: "Из Канады", tld: ".ру"};
 const SELLERS = {
   pskov: {city: "Псков", name: "Лидер Авто", person: "Виктор", phone: "+7 911 355-99-66", whatsapp: "+79113559966", telegram: "+79113559966"},
   tver:  {city: "Тверь", name: "Сервис Хрустовъ", person: "Александр", phone: "+7 996 135-42-55", whatsapp: "+79961354255", telegram: "+79961354255"}
