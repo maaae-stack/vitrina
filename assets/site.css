@@ -249,3 +249,8 @@ footer .small{font-size:13px;color:#93a39a;margin-top:28px}
 .logo svg{width:36px;height:36px}
 footer [data-sitename]{font-size:28px}
 @media (max-width:440px){.logo{font-size:21px}}
+
+/* Alternative to the deposit step: pay in full, rate locked. */
+.payfull{margin-top:18px;border-left:4px solid var(--signal);background:var(--paper);border-radius:0 8px 8px 0;padding:14px 18px;max-width:760px}
+.payfull h3{font-size:21px}
+.payfull p{margin:6px 0 0;color:var(--fog)}
