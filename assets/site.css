@@ -213,20 +213,31 @@ footer .small{font-size:13px;color:#93a39a;margin-top:28px}
 @media (max-width:440px){.logo{font-size:17px;gap:8px}.logo svg{width:26px;height:26px}.city button{padding:6px 9px;font-size:13px}.top .wrap{gap:8px}}
 @media (max-width:360px){.logo span{display:none}}
 
-/* Hero photo: the whole quad, top to wheels, always fits: the image height follows the hero height and is anchored right. */
-.hero{min-height:clamp(520px,46vw,680px);display:flex;align-items:center;padding:48px 0;background:
-  linear-gradient(90deg,rgba(18,32,25,.95) 0%,rgba(18,32,25,.85) 30%,rgba(18,32,25,.35) 55%,rgba(18,32,25,0) 75%),
-  url("../img/hero-wide.jpg") right center/auto 100% no-repeat, var(--spruce)}
-.hero .wrap{position:relative;width:100%}
-.hero .hero-row{grid-template-columns:minmax(0,620px) 1fr}
-.hero .rate{background:rgba(18,32,25,.65);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);justify-self:start;margin-top:8px}
-.hero-row>div:first-child{grid-column:1}
-.hero .rate{grid-column:1}
+/* Hero photo: the sharp photo is shown whole (top to wheels) on the right; behind the text, a blurred, darkened copy of the same forest fills any width. */
+.hero{position:relative;min-height:clamp(520px,44vw,640px);display:flex;align-items:center;padding:48px 0;background:
+  linear-gradient(90deg,rgba(18,32,25,.9),rgba(18,32,25,.72)),
+  url("../img/hero-blur.jpg") center/cover no-repeat, var(--spruce)}
+.hero-photo{position:absolute;top:0;bottom:0;right:0;aspect-ratio:1448/1086;max-width:72%;
+  background:url("../img/hero-photo.jpg") center/cover no-repeat;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28%);mask-image:linear-gradient(90deg,transparent 0,#000 28%)}
+@media (min-width:1500px){.hero-photo{right:calc((100vw - 1160px)/2 - 140px);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28%,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 28%,#000 86%,transparent 100%)}}
+.hero .wrap{width:100%}
+.hero .hero-row{grid-template-columns:minmax(0,600px) 1fr;align-items:stretch}
+.hero .wrap{position:static}
+.hero .hero-row{position:static}
+.hero .hero-row>div:first-child{position:relative;z-index:1}
+.hero .rate{position:absolute;z-index:2;top:16px;right:max(16px,calc((100vw - 1160px)/2 + 16px));min-width:0;padding:10px 16px;background:rgba(18,32,25,.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.hero .rate .v{font-size:32px}
+.hero h1,.hero .lead{text-shadow:0 1px 12px rgba(0,0,0,.35)}
 .route-band{background:var(--spruce);color:#eef2ee;padding:26px 0 30px;border-top:1px solid rgba(201,180,138,.25)}
 .route-band .route{margin-top:0}
 @media (max-width:820px){
   .hero{min-height:0;display:block;padding:calc(100vw * .9) 0 32px;background:
     linear-gradient(180deg,rgba(18,32,25,0) 0%,rgba(18,32,25,0) calc(100vw * .78),var(--spruce) calc(100vw * .98)),
     url("../img/hero-mobile.jpg") center top/100% auto no-repeat, var(--spruce)}
+  .hero-photo{display:none}
   .hero .hero-row{grid-template-columns:1fr}
+  .hero .rate{position:static;justify-self:start;padding:14px 18px}
+  .hero .rate .v{font-size:40px}
 }
