@@ -70,7 +70,7 @@
         <details><summary>Как забронировать технику?</summary><p>Нажмите «Забронировать» на нужной модели и напишите продавцу в WhatsApp или Telegram. После задатка машина закрепляется за вами и снимается с продажи.</p></details>
         <details><summary>Сколько ждать?</summary><p>Срок указан в карточке каждой модели в строке «В Москве». Для техники под заказ это срок после вашего заказа, для техники в производстве и в пути — ожидаемый месяц прибытия.</p></details>
         <details><summary>Можно привезти модель, которой нет на сайте?</summary><p>Да. Оставьте заявку внизу страницы: марку, модель, год и бюджет. Найдём вариант в Канаде и назовём цену с доставкой.</p></details>
-        <details><summary>Где посмотреть технику вживую?</summary><p>Технику в наличии можно посмотреть в Пскове у Лидер Авто или в Твери в Сервис Хрустовъ. Перед визитом позвоните продавцу.</p></details>
+        <details><summary>Где посмотреть технику вживую?</summary><p>У наших партнёров: <span id="whereList"></span>. Перед визитом позвоните продавцу.</p></details>
       </div>
     </div>
   </section>
@@ -81,7 +81,7 @@
         <div><h2>Подберём технику под задачу</h2><p class="lead">Опишите, что ищете. Заявка откроется в WhatsApp или Telegram у продавца в вашем городе, сайт ничего не сохраняет.</p></div>
         <form id="reqForm" novalidate>
           <label>Ваше имя<input name="name" autocomplete="given-name" required></label>
-          <label>Город<select name="city"><option value="pskov">Псков</option><option value="tver">Тверь</option></select></label>
+          <label>Город<select name="city" id="reqCity"></select></label>
           <label>Что ищете<select name="kind"><option>Квадроцикл</option><option>Двухместный квадроцикл</option><option>Багги (SSV)</option><option>Снегоход</option><option>Пока не знаю</option></select></label>
           <label>Бюджет, $<input name="budget" inputmode="numeric" placeholder="например, 25 000"></label>
           <label class="full">Пожелания<textarea name="wish" placeholder="Модель, цвет, для чего: охота, рыбалка, катание вдвоём…"></textarea></label>
@@ -131,11 +131,13 @@ function route(){
     {place: "Канада", what: "выкуп у дилера", n: cnt(["preorder","deposit","bought"]), w: "ед. выкуплено и заказано"},
     {place: "Бишкек", what: "авиа и растаможка", n: cnt(["air","bishkek"]), w: "ед. в пути"},
     {place: "Москва", what: "здесь цена техники, ЭПСМ по желанию", n: cnt(["moscow"]), w: "ед. в Москве"},
-    {place: CITY ? SELLERS[CITY].city : "Псков и Тверь", what: "показ и продажа: " + (CITY ? SELLERS[CITY].name : "Лидер Авто, Сервис Хрустовъ"), n: cnt(["site"]), w: "ед. на площадке"}
+    {place: CITY ? SELLERS[CITY].city : "Ваш город", what: CITY ? "показ и продажа: " + SELLERS[CITY].name : "показ и продажа у наших партнёров", n: cnt(["site"]), w: "ед. на площадке"}
   ];
   document.getElementById("route").innerHTML = legs.map(l => `<li class="${l.n ? "live" : ""}"><div class="place">${esc(l.place)}</div><div class="what">${esc(l.what)}</div>${l.n ? `<span class="cnt num">${l.n} ${l.w}</span>` : ""}</li>`).join("");
 }
 frame();
+document.getElementById("reqCity").innerHTML = Object.entries(SELLERS).map(([k, s]) => `<option value="${k}">${esc(s.city)}</option>`).join("");
+document.getElementById("whereList").textContent = Object.values(SELLERS).map(s => s.city + ", " + s.name).join("; ");
 document.getElementById("rateVal").textContent = "1 $ = " + rateStr() + " ₽";
 const rd = (DATA.rateDate || "").split("-");
 document.getElementById("rateLbl").textContent = (rd.length === 3 ? "курс на " + rd[2] + "." + rd[1] : "курс на сегодня") + ", по нему считаем рубли";
