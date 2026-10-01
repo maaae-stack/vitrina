@@ -242,3 +242,10 @@ footer .small{font-size:13px;color:#93a39a;margin-top:28px}
   .hero .rate{position:static;justify-self:start;padding:14px 18px}
   .hero .rate .v{font-size:40px}
 }
+
+/* Wordmark: the domain itself is the name. */
+.logo{font-size:26px;letter-spacing:.02em}
+.logo .t,[data-sitename] .t{color:var(--sand)}
+.logo svg{width:32px;height:32px}
+footer [data-sitename]{font-size:28px}
+@media (max-width:440px){.logo{font-size:21px}}

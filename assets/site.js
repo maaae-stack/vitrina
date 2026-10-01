@@ -1,5 +1,5 @@
 /* Shared logic for the client site. Catalog data lives in data.js (rewritten every morning from the internal tracker). */
-const SITE = {name: "Квадро из Канады"};
+const SITE = {name: "izkanady.ru", word: "izkanady", tld: ".ru"};
 const SELLERS = {
   pskov: {city: "Псков", name: "Лидер Авто", person: "Виктор", phone: "+7 911 355-99-66", whatsapp: "+79113559966", telegram: "+79113559966"},
   tver:  {city: "Тверь", name: "Сервис Хрустовъ", person: "Александр", phone: "+7 996 135-42-55", whatsapp: "+79961354255", telegram: "+79961354255"}
@@ -130,7 +130,7 @@ function updatedLine(){
   return d.length === 3 ? `Цены и наличие обновлены ${d[2]}.${d[1]}.${d[0]}. Курс: 1 $ = ${rateStr()} ₽.` : "";
 }
 function frame(){
-  document.querySelectorAll("[data-sitename]").forEach(el => el.textContent = SITE.name);
+  document.querySelectorAll("[data-sitename]").forEach(el => el.innerHTML = `<span class="w">${esc(SITE.word)}</span><span class="t">${esc(SITE.tld)}</span>`);
   const ct = document.getElementById("cityToggle"); if (ct) ct.innerHTML = cityToggle();
   const f = document.getElementById("footSellers");
   if (f) f.innerHTML = Object.values(SELLERS).map(s => `<div><h3>${esc(s.city)}</h3><p>${esc(s.name)}, ${esc(s.person)}</p><p><a class="tel num" href="tel:${digits(s.phone).replace(/^/, "+")}">${esc(s.phone)}</a></p><p>WhatsApp и Telegram на этом же номере</p></div>`).join("");
