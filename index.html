@@ -1,3 +1,160 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Техника из Канады</title>
-<style>body{margin:0;font:16px system-ui,-apple-system,sans-serif;background:#edf0ec;color:#15211b;display:grid;place-items:center;min-height:100vh;padding:16px;box-sizing:border-box}main{max-width:420px;width:100%}h1{font-size:22px}a{display:block;background:#fff;border:1px solid #d2d9d1;border-radius:8px;padding:14px 16px;margin:10px 0;color:inherit;text-decoration:none;font-weight:600}a span{display:block;font-weight:400;color:#56635b;font-size:14px}</style></head>
-<body><main><h1>Квадроциклы и багги из Канады</h1><a href="pskov/">Псков<span>Лидер Авто</span></a><a href="tver/">Тверь<span>Сервис Хрустовъ</span></a></main></body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Квадроциклы и багги из Канады</title>
+<meta name="description" content="Новые квадроциклы и багги из Канады с доставкой в Псков и Тверь. Цены в рублях по курсу на сегодня.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Golos+Text:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23c9b48a' stroke-width='5'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23d9541a'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="./"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12.5" fill="none" stroke="#c9b48a" stroke-width="5" stroke-dasharray="5 3"/><circle cx="16" cy="16" r="4" fill="#d9541a"/></svg><span data-sitename></span></a>
+    <nav class="topnav" aria-label="Разделы"><a href="#catalog">Техника</a><a href="#how">Как мы работаем</a><a href="#faq">Вопросы</a><a href="#request">Заявка</a></nav>
+    <div id="cityToggle"></div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-row">
+      <div>
+        <h1>Квадроциклы и багги из Канады с доставкой в Псков и Тверь</h1>
+        <p class="lead">Новые квадроциклы, двухместные модели и багги. Выкупаем у дилеров в Канаде, везём через Бишкек, оформляем в Москве. Цены в долларах и в рублях по курсу на сегодня.</p>
+        <div class="cta"><a class="btn primary" href="#catalog">Смотреть технику</a><a class="btn ghost-light" href="#request">Подобрать под задачу</a></div>
+      </div>
+      <div class="rate" aria-label="Курс доллара"><div class="v num" id="rateVal"></div><div class="l" id="rateLbl"></div></div>
+    </div>
+    <div class="route" aria-label="Путь техники">
+      <ol id="route"></ol>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="block" id="catalog">
+    <div class="wrap">
+      <div class="block-h"><div><h2>Техника</h2><p class="lead">Нажмите на модель, чтобы посмотреть все фото и подробности.</p></div></div>
+      <nav class="filter" id="filter" aria-label="Фильтр по наличию"></nav>
+      <div id="list"></div>
+      <p class="updated" id="updated"></p>
+    </div>
+  </section>
+
+  <section class="block" id="how">
+    <div class="wrap">
+      <div class="block-h"><div><h2>Как мы работаем</h2><p class="lead">От выбора модели до получения в вашем городе.</p></div></div>
+      <ol class="steps">
+        <li><h3>Выбираете технику</h3><p>Из того, что уже выкуплено или едет, или заказываете нужную модель и цвет.</p></li>
+        <li><h3>Бронируете задатком</h3><p>Задаток закрепляет машину за вами. Размер задатка и условия расскажет продавец.</p></li>
+        <li><h3>Выкуп в Канаде</h3><p>Покупаем новую технику у дилера и готовим к отправке.</p></li>
+        <li><h3>Авиа до Бишкека</h3><p>Самолётом в Кыргызстан, там приёмка и растаможка.</p></li>
+        <li><h3>Москва и ваш город</h3><p>Везём в Москву, по желанию оформляем ЭПСМ и передаём вам в Пскове или Твери.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="block-h"><h2>Вопросы</h2></div>
+      <div class="faq">
+        <details><summary>Почему цена в долларах?</summary><p>Технику мы покупаем в Канаде за доллары, поэтому цена фиксируется в долларах. Рублёвая цена на сайте пересчитана по курсу на сегодня, курс обновляется каждое утро. Точную сумму в рублях назовёт продавец в день оплаты.</p></details>
+        <details><summary>Что такое ЭПСМ и нужен ли он?</summary><p>Электронный паспорт самоходной машины. Он нужен, чтобы поставить технику на учёт. Оформляем по желанию, это <b id="epsmFaq"></b> сверх цены техники.</p></details>
+        <details><summary>Как забронировать технику?</summary><p>Нажмите «Забронировать» на нужной модели и напишите продавцу в WhatsApp или Telegram. После задатка машина закрепляется за вами и снимается с продажи.</p></details>
+        <details><summary>Сколько ждать?</summary><p>Срок указан в карточке каждой модели в строке «В Москве». Для техники под заказ это срок после вашего заказа, для техники в производстве и в пути — ожидаемый месяц прибытия.</p></details>
+        <details><summary>Можно привезти модель, которой нет на сайте?</summary><p>Да. Оставьте заявку внизу страницы: марку, модель, год и бюджет. Найдём вариант в Канаде и назовём цену с доставкой.</p></details>
+        <details><summary>Где посмотреть технику вживую?</summary><p>Технику в наличии можно посмотреть в Пскове у Лидер Авто или в Твери в Сервис Хрустовъ. Перед визитом позвоните продавцу.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="request">
+    <div class="wrap">
+      <div class="req">
+        <div><h2>Подберём технику под задачу</h2><p class="lead">Опишите, что ищете. Заявка откроется в WhatsApp или Telegram у продавца в вашем городе, сайт ничего не сохраняет.</p></div>
+        <form id="reqForm" novalidate>
+          <label>Ваше имя<input name="name" autocomplete="given-name" required></label>
+          <label>Город<select name="city"><option value="pskov">Псков</option><option value="tver">Тверь</option></select></label>
+          <label>Что ищете<select name="kind"><option>Квадроцикл</option><option>Двухместный квадроцикл</option><option>Багги (SSV)</option><option>Снегоход</option><option>Пока не знаю</option></select></label>
+          <label>Бюджет, $<input name="budget" inputmode="numeric" placeholder="например, 25 000"></label>
+          <label class="full">Пожелания<textarea name="wish" placeholder="Модель, цвет, для чего: охота, рыбалка, катание вдвоём…"></textarea></label>
+          <div class="send"><button class="btn primary" type="submit" data-via="wa">Отправить в WhatsApp</button><button class="btn" type="submit" data-via="tg">Отправить в Telegram</button><span class="hint" id="reqHint"></span></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols"><div><h3 data-sitename></h3><p>Квадроциклы и багги из Канады. Цены за технику в Москве.</p></div><div id="footSellers" style="display:contents"></div></div>
+    <p class="small">Названия марок и моделей принадлежат их владельцам и используются только для описания техники.</p>
+  </div>
+</footer>
+<div class="toast" id="toast" hidden></div>
+<div class="sheet-bg" id="sheet" hidden></div>
+
+<script src="data.js"></script>
+<script src="assets/site.js"></script>
+<script>
+let active = "all";
+function card(it){
+  const w = where(it);
+  return `<article class="card">
+    <div class="ph">${galleryHtml(it, false)}${pillsHtml(it)}${it.qty > 1 ? `<span class="qty">${it.qty} шт.</span>` : ""}</div>
+    <div class="body">
+      <div><h4><a href="${modelUrl(it)}">${esc(title(it))}</a></h4><div class="meta">${esc(it.year)}, ${esc(it.color || "цвет уточняется")}${(it.specs || []).length ? ", " + it.specs.map(s => esc(s.toLowerCase())).join(", ") : ""}</div></div>
+      <div class="price">${priceHtml(it)}</div>
+      <dl class="facts"><dt>В Москве</dt><dd>${esc(eta(it))}</dd>${w ? `<dt>Где смотреть</dt><dd>${esc(w)}</dd>` : ""}</dl>
+      <div class="actions"><a class="btn" href="${modelUrl(it)}">Подробнее</a><button class="btn primary" type="button" data-ask="${esc(it.ids[0])}">${askLabel(it)}</button></div>
+    </div></article>`;
+}
+function render(){
+  const byGroup = GROUPS.map(g => ({g, items: ALL.filter(it => g.stages.includes(it.stage))})).filter(x => x.items.length);
+  const total = ALL.reduce((a, i) => a + i.qty, 0);
+  document.getElementById("filter").innerHTML = `<button type="button" data-f="all" aria-pressed="${active === "all"}">Вся техника<span>${total}</span></button>` +
+    byGroup.map(x => `<button type="button" data-f="${x.g.k}" aria-pressed="${active === x.g.k}">${esc(x.g.t)}<span>${x.items.reduce((a, i) => a + i.qty, 0)}</span></button>`).join("");
+  document.getElementById("list").innerHTML = byGroup.length ? byGroup.filter(x => active === "all" || x.g.k === active).map(x =>
+    `<section class="grp"><div class="grp-h"><h3>${esc(x.g.t)}</h3><p>${esc(x.g.d)}</p></div><div class="grid">${x.items.map(card).join("")}</div></section>`).join("")
+    : `<p class="lead">Сейчас обновляем список. Оставьте заявку ниже, и мы подберём технику.</p>`;
+}
+function route(){
+  const cnt = st => ALL.filter(i => st.includes(i.stage)).reduce((a, i) => a + i.qty, 0);
+  const legs = [
+    {place: "Канада", what: "выкуп у дилера", n: cnt(["preorder","deposit","bought"]), w: "ед. выкуплено и в производстве"},
+    {place: "Бишкек", what: "авиа и растаможка", n: cnt(["air","bishkek"]), w: "ед. в пути"},
+    {place: "Москва", what: "ЭПСМ по желанию", n: cnt(["moscow"]), w: "ед. в Москве"},
+    {place: CITY ? SELLERS[CITY].city : "Псков и Тверь", what: CITY ? SELLERS[CITY].name : "Лидер Авто, Сервис Хрустовъ", n: cnt(["site"]), w: "ед. на площадке"}
+  ];
+  document.getElementById("route").innerHTML = legs.map(l => `<li class="${l.n ? "live" : ""}"><div class="place">${esc(l.place)}</div><div class="what">${esc(l.what)}</div>${l.n ? `<span class="cnt num">${l.n} ${l.w}</span>` : ""}</li>`).join("");
+}
+frame();
+document.getElementById("rateVal").textContent = "1 $ = " + rateStr() + " ₽";
+const rd = (DATA.rateDate || "").split("-");
+document.getElementById("rateLbl").textContent = (rd.length === 3 ? "курс на " + rd[2] + "." + rd[1] : "курс на сегодня") + ", по нему считаем рубли";
+document.getElementById("epsmFaq").textContent = fmt(DATA.epsmRub || 166000) + " ₽";
+render(); route();
+document.addEventListener("citychange", () => { route(); const s = document.querySelector("#reqForm [name=city]"); if (CITY) s.value = CITY; });
+if (CITY) document.querySelector("#reqForm [name=city]").value = CITY;
+document.getElementById("filter").addEventListener("click", e => { const b = e.target.closest("[data-f]"); if (!b) return; active = b.dataset.f; render(); });
+document.getElementById("list").addEventListener("click", e => { const b = e.target.closest("[data-ask]"); if (b) askAbout(findModel(b.dataset.ask)); });
+document.getElementById("reqForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target, v = k => f.elements[k].value.trim();
+  if (!v("name")) { document.getElementById("reqHint").textContent = "Напишите, как к вам обращаться"; f.elements.name.focus(); return; }
+  const s = SELLERS[v("city")]; setCity(v("city"));
+  const text = `Здравствуйте! Меня зовут ${v("name")}. Ищу: ${v("kind")}.` + (v("budget") ? ` Бюджет: ${v("budget")} $.` : "") + (v("wish") ? ` ${v("wish")}` : "");
+  const via = (e.submitter && e.submitter.dataset.via) || "wa";
+  const url = via === "tg" ? tgHref(s) : `https://wa.me/${digits(s.whatsapp)}?text=${encodeURIComponent(text)}`;
+  if (via === "tg") { try { navigator.clipboard.writeText(text); toast("Текст заявки скопирован, вставьте его в чат"); } catch (err) {} }
+  window.open(url, "_blank", "noopener");
+});
+</script>
+</body>
+</html>
