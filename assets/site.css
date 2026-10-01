@@ -213,13 +213,20 @@ footer .small{font-size:13px;color:#93a39a;margin-top:28px}
 @media (max-width:440px){.logo{font-size:17px;gap:8px}.logo svg{width:26px;height:26px}.city button{padding:6px 9px;font-size:13px}.top .wrap{gap:8px}}
 @media (max-width:360px){.logo span{display:none}}
 
-/* Hero photo: their own quad in the forest, darkened on the text side so the copy stays readable. */
-.hero{background:
-  linear-gradient(90deg,rgba(18,32,25,.94) 0%,rgba(18,32,25,.8) 34%,rgba(18,32,25,.3) 60%,rgba(18,32,25,.15) 100%),
-  linear-gradient(0deg,rgba(18,32,25,.9) 0%,rgba(18,32,25,0) 38%),
-  url("../img/hero-wide.jpg") right center/cover no-repeat, var(--spruce)}
-.hero .wrap{position:relative}
-.hero .rate{background:rgba(18,32,25,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-@media (max-width:820px){.hero{background:
-  linear-gradient(180deg,rgba(18,32,25,.55) 0%,rgba(18,32,25,.86) 45%,rgba(18,32,25,.96) 100%),
-  url("../img/hero-mobile.jpg") center top/cover no-repeat, var(--spruce)}}
+/* Hero photo: the whole quad, top to wheels, always fits: the image height follows the hero height and is anchored right. */
+.hero{min-height:clamp(520px,46vw,680px);display:flex;align-items:center;padding:48px 0;background:
+  linear-gradient(90deg,rgba(18,32,25,.95) 0%,rgba(18,32,25,.85) 30%,rgba(18,32,25,.35) 55%,rgba(18,32,25,0) 75%),
+  url("../img/hero-wide.jpg") right center/auto 100% no-repeat, var(--spruce)}
+.hero .wrap{position:relative;width:100%}
+.hero .hero-row{grid-template-columns:minmax(0,620px) 1fr}
+.hero .rate{background:rgba(18,32,25,.65);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);justify-self:start;margin-top:8px}
+.hero-row>div:first-child{grid-column:1}
+.hero .rate{grid-column:1}
+.route-band{background:var(--spruce);color:#eef2ee;padding:26px 0 30px;border-top:1px solid rgba(201,180,138,.25)}
+.route-band .route{margin-top:0}
+@media (max-width:820px){
+  .hero{min-height:0;display:block;padding:calc(100vw * .9) 0 32px;background:
+    linear-gradient(180deg,rgba(18,32,25,0) 0%,rgba(18,32,25,0) calc(100vw * .78),var(--spruce) calc(100vw * .98)),
+    url("../img/hero-mobile.jpg") center top/100% auto no-repeat, var(--spruce)}
+  .hero .hero-row{grid-template-columns:1fr}
+}
