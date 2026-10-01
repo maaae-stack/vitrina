@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>Квадроциклы и багги из Канады</title>
-<meta name="description" content="Новые квадроциклы и багги из Канады с доставкой в Псков и Тверь. Цены в рублях по курсу на сегодня.">
+<title>Квадроциклы и багги из Канады, цены в Москве</title>
+<meta name="description" content="Новые квадроциклы и багги из Канады. Цены за технику в Москве, в долларах и рублях по курсу на сегодня.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Golos+Text:wght@400;500;600;700&display=swap">
@@ -25,8 +25,8 @@
   <div class="wrap">
     <div class="hero-row">
       <div>
-        <h1>Квадроциклы и багги из Канады с доставкой в Псков и Тверь</h1>
-        <p class="lead">Новые квадроциклы, двухместные модели и багги. Выкупаем у дилеров в Канаде, везём через Бишкек, оформляем в Москве. Цены в долларах и в рублях по курсу на сегодня.</p>
+        <h1>Квадроциклы и багги из Канады</h1>
+        <p class="lead">Новые квадроциклы, двухместные модели и багги. Выкупаем у дилеров в Канаде и привозим в Москву.</p><p class="lead" style="color:#fff;font-weight:600">Все цены — за технику в Москве. Доставку до вашего города посчитаем отдельно.</p>
         <div class="cta"><a class="btn primary" href="#catalog">Смотреть технику</a><a class="btn ghost-light" href="#request">Подобрать под задачу</a></div>
       </div>
       <div class="rate" aria-label="Курс доллара"><div class="v num" id="rateVal"></div><div class="l" id="rateLbl"></div></div>
@@ -55,7 +55,7 @@
         <li><h3>Бронируете задатком</h3><p>Задаток закрепляет машину за вами. Размер задатка и условия расскажет продавец.</p></li>
         <li><h3>Выкуп в Канаде</h3><p>Покупаем новую технику у дилера и готовим к отправке.</p></li>
         <li><h3>Авиа до Бишкека</h3><p>Самолётом в Кыргызстан, там приёмка и растаможка.</p></li>
-        <li><h3>Москва и ваш город</h3><p>Везём в Москву, по желанию оформляем ЭПСМ и передаём вам в Пскове или Твери.</p></li>
+        <li><h3>Получение в Москве</h3><p>Передаём технику в Москве, по желанию с ЭПСМ. Если нужно дальше, скажите куда, и мы посчитаем доставку отдельно.</p></li>
       </ol>
     </div>
   </section>
@@ -65,6 +65,7 @@
       <div class="block-h"><h2>Вопросы</h2></div>
       <div class="faq">
         <details><summary>Почему цена в долларах?</summary><p>Технику мы покупаем в Канаде за доллары, поэтому цена фиксируется в долларах. Рублёвая цена на сайте пересчитана по курсу на сегодня, курс обновляется каждое утро. Точную сумму в рублях назовёт продавец в день оплаты.</p></details>
+        <details><summary>Цена уже с доставкой до моего города?</summary><p>Нет. Все цены на сайте — за технику в Москве. Скажите продавцу, куда нужно привезти, и он посчитает доставку отдельно.</p></details>
         <details><summary>Что такое ЭПСМ и нужен ли он?</summary><p>Электронный паспорт самоходной машины. Он нужен, чтобы поставить технику на учёт. Оформляем по желанию, это <b id="epsmFaq"></b> сверх цены техники.</p></details>
         <details><summary>Как забронировать технику?</summary><p>Нажмите «Забронировать» на нужной модели и напишите продавцу в WhatsApp или Telegram. После задатка машина закрепляется за вами и снимается с продажи.</p></details>
         <details><summary>Сколько ждать?</summary><p>Срок указан в карточке каждой модели в строке «В Москве». Для техники под заказ это срок после вашего заказа, для техники в производстве и в пути — ожидаемый месяц прибытия.</p></details>
@@ -127,10 +128,10 @@ function render(){
 function route(){
   const cnt = st => ALL.filter(i => st.includes(i.stage)).reduce((a, i) => a + i.qty, 0);
   const legs = [
-    {place: "Канада", what: "выкуп у дилера", n: cnt(["preorder","deposit","bought"]), w: "ед. выкуплено и в производстве"},
+    {place: "Канада", what: "выкуп у дилера", n: cnt(["preorder","deposit","bought"]), w: "ед. выкуплено и заказано"},
     {place: "Бишкек", what: "авиа и растаможка", n: cnt(["air","bishkek"]), w: "ед. в пути"},
-    {place: "Москва", what: "ЭПСМ по желанию", n: cnt(["moscow"]), w: "ед. в Москве"},
-    {place: CITY ? SELLERS[CITY].city : "Псков и Тверь", what: CITY ? SELLERS[CITY].name : "Лидер Авто, Сервис Хрустовъ", n: cnt(["site"]), w: "ед. на площадке"}
+    {place: "Москва", what: "здесь цена техники, ЭПСМ по желанию", n: cnt(["moscow"]), w: "ед. в Москве"},
+    {place: CITY ? SELLERS[CITY].city : "Псков и Тверь", what: "показ и продажа: " + (CITY ? SELLERS[CITY].name : "Лидер Авто, Сервис Хрустовъ"), n: cnt(["site"]), w: "ед. на площадке"}
   ];
   document.getElementById("route").innerHTML = legs.map(l => `<li class="${l.n ? "live" : ""}"><div class="place">${esc(l.place)}</div><div class="what">${esc(l.what)}</div>${l.n ? `<span class="cnt num">${l.n} ${l.w}</span>` : ""}</li>`).join("");
 }

@@ -72,7 +72,7 @@ function galleryHtml(it, eager){
 }
 function priceHtml(it){
   return it.price > 0
-    ? `<div class="usd num">${fmt(it.price)} $</div><div class="rub num">≈ ${fmt(it.price * DATA.rate)} ₽ по курсу ${rateStr()}</div>`
+    ? `<div class="usd num">${fmt(it.price)} $</div><div class="rub num">≈ ${fmt(it.price * DATA.rate)} ₽ по курсу ${rateStr()}</div><div class="rub">цена в Москве</div>`
     : `<div class="soon">Цену уточняйте</div><div class="rub">можно забронировать уже сейчас</div>`;
 }
 const askLabel = it => it.reserved ? "Узнать о похожей" : it.stage === "offer" ? "Заказать" : "Забронировать";

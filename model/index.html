@@ -63,7 +63,7 @@ if (!it) {
         ${(it.specs || []).map(s => { const p = s.split(":"); return p.length > 1 ? `<dt>${esc(p[0])}</dt><dd>${esc(p.slice(1).join(":").trim())}</dd>` : `<dt>Особенности</dt><dd>${esc(s)}</dd>`; }).join("")}
       </dl>
       <div class="actions"><button class="btn primary" type="button" id="ask">${askLabel(it)}</button><button class="btn" type="button" id="share">Скопировать ссылку</button></div>
-      <div class="note">Цена указана за технику в Москве. ЭПСМ по желанию: <b>+${fmt(DATA.epsmRub || 166000)} ₽</b>. Рубли посчитаны по курсу ${rateStr()} ₽ за 1 $, точную сумму назовёт продавец в день оплаты.</div>
+      <div class="note"><b>Цена — за технику в Москве.</b> Доставку до вашего города посчитаем отдельно. ЭПСМ по желанию: <b>+${fmt(DATA.epsmRub || 166000)} ₽</b>. Рубли посчитаны по курсу ${rateStr()} ₽ за 1 $, точную сумму назовёт продавец в день оплаты.</div>
       <p class="updated">${esc(updatedLine())}</p>
     </div></div>`;
   document.getElementById("ask").onclick = () => askAbout(it);
