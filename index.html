@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>Из Канады.ру — квадроциклы и багги из Канады, цены в Москве</title>
-<meta name="description" content="Новые квадроциклы и багги из Канады. Цены за технику в Москве, в долларах и рублях по курсу на сегодня.">
+<title>Из Канады.ру — квадроциклы, багги, снегоходы и гидроциклы, цены в Москве</title>
+<meta name="description" content="Новые квадроциклы, багги, снегоходы и гидроциклы из Канады. Цены за технику в Москве, в долларах и рублях по курсу на сегодня.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Golos+Text:wght@400;500;600;700&display=swap">
@@ -27,7 +27,7 @@
     <div class="hero-row">
       <div>
         <h1>Квадроциклы и багги из Канады</h1>
-        <p class="lead">Новые квадроциклы, двухместные модели и багги. Выкупаем у дилеров в Канаде и привозим в Москву.</p><p class="lead" style="color:#fff;font-weight:600">Все цены — за технику в Москве. Доставку до вашего города посчитаем отдельно.</p>
+        <p class="lead">Новые квадроциклы, багги, снегоходы и гидроциклы. Выкупаем у дилеров в Канаде и привозим в Москву.</p><p class="lead" style="color:#fff;font-weight:600">Все цены — за технику в Москве. Доставку до вашего города посчитаем отдельно.</p>
         <div class="cta"><a class="btn primary" href="#catalog">Смотреть технику</a><a class="btn ghost-light" href="#request">Подобрать под задачу</a></div>
       </div>
       <div class="rate" aria-label="Курс доллара"><div class="v num" id="rateVal"></div><div class="l" id="rateLbl"></div></div>
@@ -53,7 +53,7 @@
       <div class="block-h"><div><h2>Как мы работаем</h2><p class="lead">От выбора модели до получения в вашем городе.</p></div></div>
       <ol class="steps">
         <li><h3>Выбираете технику</h3><p>Из того, что уже выкуплено или едет, или заказываете нужную модель и цвет.</p></li>
-        <li><h3>Бронируете задатком</h3><p>Задаток закрепляет машину за вами. Размер задатка и условия расскажет продавец.</p></li>
+        <li><h3>Бронируете задатком</h3><p>Задаток закрепляет технику за вами. Размер задатка и условия расскажет продавец.</p></li>
         <li><h3>Выкуп в Канаде</h3><p>Покупаем новую технику у дилера и готовим к отправке.</p></li>
         <li><h3>Авиа до Бишкека</h3><p>Самолётом в Кыргызстан, там приёмка и растаможка.</p></li>
         <li><h3>Получение в Москве</h3><p>Передаём технику в Москве, по желанию с ЭПСМ. Если нужно дальше, скажите куда, и мы посчитаем доставку отдельно.</p></li>
@@ -68,7 +68,7 @@
         <details><summary>Почему цена в долларах?</summary><p>Технику мы покупаем в Канаде за доллары, поэтому цена фиксируется в долларах. Рублёвая цена на сайте пересчитана по курсу на сегодня, курс обновляется каждое утро. Точную сумму в рублях назовёт продавец в день оплаты.</p></details>
         <details><summary>Цена уже с доставкой до моего города?</summary><p>Нет. Все цены на сайте — за технику в Москве. Скажите продавцу, куда нужно привезти, и он посчитает доставку отдельно.</p></details>
         <details><summary>Что такое ЭПСМ и нужен ли он?</summary><p>Электронный паспорт самоходной машины. Он нужен, чтобы поставить технику на учёт. Оформляем по желанию, это <b id="epsmFaq"></b> сверх цены техники.</p></details>
-        <details><summary>Как забронировать технику?</summary><p>Нажмите «Забронировать» на нужной модели и напишите продавцу в WhatsApp или Telegram. После задатка машина закрепляется за вами и снимается с продажи.</p></details>
+        <details><summary>Как забронировать технику?</summary><p>Нажмите «Забронировать» на нужной модели и напишите продавцу в WhatsApp или Telegram. После задатка техника закрепляется за вами и снимается с продажи.</p></details>
         <details><summary>Сколько ждать?</summary><p>Срок указан в карточке каждой модели в строке «В Москве». Для техники под заказ это срок после вашего заказа, для техники в производстве и в пути — ожидаемый месяц прибытия.</p></details>
         <details><summary>Можно привезти модель, которой нет на сайте?</summary><p>Да. Оставьте заявку внизу страницы: марку, модель, год и бюджет. Найдём вариант в Канаде и назовём цену с доставкой.</p></details>
         <details><summary>Где посмотреть технику вживую?</summary><p>У наших партнёров: <span id="whereList"></span>. Перед визитом позвоните продавцу.</p></details>
@@ -83,7 +83,7 @@
         <form id="reqForm" novalidate>
           <label>Ваше имя<input name="name" autocomplete="given-name" required></label>
           <label>Город<select name="city" id="reqCity"></select></label>
-          <label>Что ищете<select name="kind"><option>Квадроцикл</option><option>Двухместный квадроцикл</option><option>Багги (SSV)</option><option>Снегоход</option><option>Пока не знаю</option></select></label>
+          <label>Что ищете<select name="kind"><option>Квадроцикл</option><option>Двухместный квадроцикл</option><option>Багги (SSV)</option><option>Снегоход</option><option>Гидроцикл</option><option>Пока не знаю</option></select></label>
           <label>Бюджет, $<input name="budget" inputmode="numeric" placeholder="например, 25 000"></label>
           <label class="full">Пожелания<textarea name="wish" placeholder="Модель, цвет, для чего: охота, рыбалка, катание вдвоём…"></textarea></label>
           <div class="send"><button class="btn primary" type="submit" data-via="wa">Отправить в WhatsApp</button><button class="btn" type="submit" data-via="tg">Отправить в Telegram</button><span class="hint" id="reqHint"></span></div>
@@ -95,7 +95,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="cols"><div><h3 data-sitename></h3><p>Квадроциклы и багги из Канады. Цены за технику в Москве.</p></div><div id="footSellers" style="display:contents"></div></div>
+    <div class="cols"><div><h3 data-sitename></h3><p>Квадроциклы, багги, снегоходы и гидроциклы из Канады. Цены за технику в Москве.</p></div><div id="footSellers" style="display:contents"></div></div>
     <p class="small">Названия марок и моделей принадлежат их владельцам и используются только для описания техники.</p>
   </div>
 </footer>
