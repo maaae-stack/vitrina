@@ -1,9 +1,9 @@
 /* Generated from the internal tracker. Only client-safe fields. */
 /*DATA-START*/const DATA = {
- "rate": 84.59,
+ "rate": 84.9,
  "rateDate": "2026-10-02",
  "epsmRub": 166000.0,
- "updated": "2026-10-02T22:16+04:00",
+ "updated": "2026-10-02T22:22+04:00",
  "items": [
   {
    "id": "example-2",
