@@ -101,6 +101,15 @@ document.addEventListener("scroll", e => {
 document.addEventListener("click", e => { const b = e.target.closest("[data-city]"); if (b) setCity(b.dataset.city); });
 
 /* Contact sheet: the chosen city's seller, or both if no city is chosen yet. */
+async function copyText(t){
+  try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(t); return true; } } catch (e) {}
+  try {
+    const ta = document.createElement("textarea"); ta.value = t; ta.setAttribute("readonly", "");
+    ta.style.cssText = "position:fixed;top:0;left:0;opacity:0;font-size:16px";
+    document.body.appendChild(ta); ta.focus(); ta.select(); ta.setSelectionRange(0, t.length);
+    const ok = document.execCommand("copy"); ta.remove(); return ok;
+  } catch (e) { return false; }
+}
 function toast(t){ const el = document.getElementById("toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => el.hidden = true, 2600); }
 function tgHref(s){ const t = String(s.telegram || ""); return "https://t.me/" + (/^\+?\d[\d\s()-]{6,}$/.test(t) ? "+" + digits(t) : t.replace(/^@|^https?:\/\/t\.me\//, "")); }
 function sellerBlock(key, text){
@@ -126,7 +135,7 @@ function openSheet(heading, sub, text){
     if (e.target === el || e.target.closest("[data-close]")) return close();
     if (e.target.closest("[data-other]")) { const c = CITY; CITY = ""; close(); openSheet(heading, sub, text); CITY = c; return; }
     const cp = e.target.closest("[data-copy]");
-    if (cp) { try { await navigator.clipboard.writeText(cp.dataset.copy); toast("Номер скопирован"); } catch (err) { toast(cp.dataset.copy); } }
+    if (cp) { toast(await copyText(cp.dataset.copy) ? "Номер скопирован" : cp.dataset.copy); }
   };
   el.querySelector(".btn.primary")?.focus();
 }

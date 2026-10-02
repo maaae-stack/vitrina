@@ -107,7 +107,7 @@
 <div class="sheet-bg" id="sheet" hidden></div>
 
 <script src="data.js?v=20261002b"></script>
-<script src="assets/site.js?v=20261002d"></script>
+<script src="assets/site.js?v=20261003a"></script>
 <script>
 let active = "all";
 function card(it){
@@ -160,7 +160,7 @@ document.getElementById("reqForm").addEventListener("submit", e => {
   const text = `Здравствуйте! Меня зовут ${v("name")}. Ищу: ${v("kind")}.` + (v("budget") ? ` Бюджет: ${v("budget")} $.` : "") + (v("wish") ? ` ${v("wish")}` : "");
   const via = (e.submitter && e.submitter.dataset.via) || "wa";
   const url = via === "tg" ? tgHref(s) : `https://wa.me/${digits(s.whatsapp)}?text=${encodeURIComponent(text)}`;
-  if (via === "tg") { try { navigator.clipboard.writeText(text); toast("Текст заявки скопирован, вставьте его в чат"); } catch (err) {} }
+  if (via === "tg") { copyText(text).then(ok => { if (ok) toast("Текст заявки скопирован, вставьте его в чат"); }); }
   window.open(url, "_blank", "noopener");
 });
 </script>

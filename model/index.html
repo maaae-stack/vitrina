@@ -36,7 +36,7 @@
 <div class="sheet-bg" id="sheet" hidden></div>
 
 <script src="data.js?v=20261002b"></script>
-<script src="assets/site.js?v=20261002d"></script>
+<script src="assets/site.js?v=20261003a"></script>
 <script>
 frame();
 const id = new URLSearchParams(location.search).get("id");
@@ -68,8 +68,10 @@ if (!it) {
     </div></div>${typeof descHtml === "function" ? descHtml(it) : ""}`;
   document.getElementById("ask").onclick = () => askAbout(it);
   document.getElementById("share").onclick = async () => {
-    const url = location.origin + location.pathname + "?id=" + encodeURIComponent(it.ids[0]);
-    try { if (navigator.share) { await navigator.share({title: title(it), url}); return; } await navigator.clipboard.writeText(url); toast("Ссылка скопирована"); } catch (e) { if (e && e.name !== "AbortError") toast(url); }
+    const url = location.origin + location.pathname + "?id=" + encodeURIComponent(it.ids[0]) + (new URLSearchParams(location.search).get("city") ? "&city=" + encodeURIComponent(new URLSearchParams(location.search).get("city")) : "");
+    if (await copyText(url)) { toast("Ссылка скопирована"); return; }
+    if (navigator.share) { try { await navigator.share({title: title(it), url}); return; } catch (e) { if (e && e.name === "AbortError") return; } }
+    prompt("Скопируйте ссылку:", url);
   };
   box.addEventListener("click", e => { const b = e.target.closest("[data-th]"); if (!b) return; const gal = box.querySelector(".gal"); gal.scrollTo({left: gal.clientWidth * Number(b.dataset.th), behavior: "smooth"}); });
 }
