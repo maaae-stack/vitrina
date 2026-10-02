@@ -3,7 +3,7 @@
  "rate": 84.9,
  "rateDate": "2026-10-02",
  "epsmRub": 166000.0,
- "updated": "2026-10-02T22:53+04:00",
+ "updated": "2026-10-02T22:56+04:00",
  "items": [
   {
    "id": "example-2",
@@ -397,7 +397,7 @@
    "year": "2027",
    "color": "Dusty Navy & Orange Crush",
    "price": 0.0,
-   "eta": "",
+   "eta": "2027-01-15",
    "etaText": "",
    "dest": "",
    "reserved": false,
