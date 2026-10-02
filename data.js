@@ -3,7 +3,7 @@
  "rate": 84.59,
  "rateDate": "2026-10-02",
  "epsmRub": 166000.0,
- "updated": "2026-10-02T16:33+04:00",
+ "updated": "2026-10-02T16:41+04:00",
  "items": [
   {
    "id": "example-2",
@@ -295,7 +295,7 @@
    "dest": "",
    "reserved": false,
    "imgs": [
-    "img/xmr-2027-1.jpg"
+    "img/xmr-2027-calm.jpg"
    ],
    "specs": []
   },
@@ -312,7 +312,7 @@
    "dest": "",
    "reserved": false,
    "imgs": [
-    "img/xmr-2027-1.jpg"
+    "img/xmr-2027-calm.jpg"
    ],
    "specs": []
   },
@@ -329,7 +329,7 @@
    "dest": "",
    "reserved": false,
    "imgs": [
-    "img/xmr-2027-1.jpg"
+    "img/xmr-2027-calm.jpg"
    ],
    "specs": []
   },
@@ -346,7 +346,7 @@
    "dest": "",
    "reserved": false,
    "imgs": [
-    "img/xmr-2027-1.jpg"
+    "img/xmr-2027-calm.jpg"
    ],
    "specs": []
   }
