@@ -49,7 +49,7 @@ if (!it) {
   const g = groupOf(it), w = where(it), imgs = it.imgs || [];
   box.innerHTML = `<div class="model">
     <div>
-      <div class="ph">${galleryHtml(it, true)}${pillsHtml(it)}${(it.qty > 1 || it.stage === "preorder" || it.stage === "offer") ? `<span class="qty">${it.qty} шт.</span>` : ""}</div>
+      <div class="ph">${galleryHtml(it, true)}${pillsHtml(it)}${(!it.noQty && (it.qty > 1 || it.stage === "preorder" || it.stage === "offer")) ? `<span class="qty">${it.qty} шт.</span>` : ""}</div>
       ${imgs.length > 1 ? `<div class="thumbs" aria-label="Все фото">${imgs.map((src, i) => `<button type="button" data-th="${i}" aria-current="${i === 0}" aria-label="Фото ${i + 1}"><img src="${esc(src)}" alt="" loading="lazy"></button>`).join("")}</div>` : ""}
     </div>
     <div class="pane">
@@ -59,7 +59,7 @@ if (!it) {
         <dt>Статус</dt><dd>${it.reserved ? "Забронировано" : esc(g.t) + (isFree(it) ? ", в свободной продаже" : "")}</dd>
         <dt>В Москве</dt><dd>${esc(eta(it))}</dd>
         ${w ? `<dt>Где смотреть</dt><dd>${esc(w)}</dd>` : ""}
-        ${(it.qty > 1 || it.stage === "preorder" || it.stage === "offer") ? `<dt>Доступно</dt><dd>${it.qty} шт.</dd>` : ""}
+        ${(!it.noQty && (it.qty > 1 || it.stage === "preorder" || it.stage === "offer")) ? `<dt>Доступно</dt><dd>${it.qty} шт.</dd>` : ""}
         ${(it.specs || []).map(s => { const p = s.split(":"); return p.length > 1 ? `<dt>${esc(p[0])}</dt><dd>${esc(p.slice(1).join(":").trim())}</dd>` : `<dt>Особенности</dt><dd>${esc(s)}</dd>`; }).join("")}
       </dl>
       <div class="actions"><button class="btn primary" type="button" id="ask">${askLabel(it)}</button><button class="btn" type="button" id="share">Скопировать ссылку</button></div>

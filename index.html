@@ -113,7 +113,7 @@ let active = "all";
 function card(it){
   const w = where(it);
   return `<article class="card">
-    <div class="ph">${galleryHtml(it, false)}${pillsHtml(it)}${(it.qty > 1 || it.stage === "preorder" || it.stage === "offer") ? `<span class="qty">${it.qty} шт.</span>` : ""}</div>
+    <div class="ph">${galleryHtml(it, false)}${pillsHtml(it)}${(!it.noQty && (it.qty > 1 || it.stage === "preorder" || it.stage === "offer")) ? `<span class="qty">${it.qty} шт.</span>` : ""}</div>
     <div class="body">
       <div><h4><a href="${modelUrl(it)}">${esc(title(it))}</a></h4><div class="meta">${esc(yearStr(it))}, ${esc(it.color || "цвет уточняется")}${(it.specs || []).length ? ", " + it.specs.map(s => esc(s)).join(", ") : ""}</div></div>
       <div class="price">${priceHtml(it)}</div>
