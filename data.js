@@ -3,7 +3,7 @@
  "rate": 84.9,
  "rateDate": "2026-10-02",
  "epsmRub": 166000.0,
- "updated": "2026-10-03T02:50+04:00",
+ "updated": "2026-10-03T02:54+04:00",
  "items": [
   {
    "id": "example-2",
@@ -503,7 +503,7 @@
    "model": "Expedition LE 20\" 900 ACE",
    "year": "2027",
    "color": "Monument Grey",
-   "price": 0.0,
+   "price": 26000.0,
    "eta": "",
    "etaText": "3–4 недели после заказа",
    "dest": "",
