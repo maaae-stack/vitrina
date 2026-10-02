@@ -14,7 +14,7 @@ const GROUPS = [
 const MONTHS = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"];
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fmt = n => Math.round(n).toLocaleString("ru-RU");
-const rateStr = () => String(DATA.rate).replace(".", ",");
+const rateStr = () => Number(DATA.rate).toFixed(2).replace(".", ",");
 const digits = s => String(s || "").replace(/\D/g, "");
 const ATV = `<svg viewBox="0 0 120 70" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="50" r="14"/><circle cx="96" cy="50" r="14"/><path d="M38 44h44M18 34l14-12h22l10 10h22l14 10M56 22l6-10h10"/></g></svg>`;
 
