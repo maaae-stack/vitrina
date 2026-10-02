@@ -3,7 +3,7 @@
  "rate": 84.9,
  "rateDate": "2026-10-02",
  "epsmRub": 166000.0,
- "updated": "2026-10-03T03:25+04:00",
+ "updated": "2026-10-03T03:27+04:00",
  "items": [
   {
    "id": "example-2",
@@ -557,6 +557,7 @@
    "dest": "",
    "reserved": false,
    "imgs": [
+    "img/expedition-xtreme-2027-0.jpg",
     "img/expedition-xtreme-2027-1.jpg",
     "img/expedition-xtreme-2027-2.jpg",
     "img/expedition-xtreme-2027-3.jpg"
