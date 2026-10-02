@@ -3,7 +3,7 @@
  "rate": 84.59,
  "rateDate": "2026-10-02",
  "epsmRub": 166000.0,
- "updated": "2026-10-02T17:13+04:00",
+ "updated": "2026-10-02T17:15+04:00",
  "items": [
   {
    "id": "example-2",
@@ -296,7 +296,7 @@
    "make": "CAN-AM",
    "model": "MAX Limited 1000R",
    "year": "2027",
-   "color": "",
+   "color": "Stealth Black",
    "price": 0.0,
    "eta": "2027-01-15",
    "etaText": "",
@@ -315,7 +315,7 @@
    "make": "CAN-AM",
    "model": "MAX Limited 1000R",
    "year": "2027",
-   "color": "",
+   "color": "Stealth Black",
    "price": 0.0,
    "eta": "2027-01-15",
    "etaText": "",
