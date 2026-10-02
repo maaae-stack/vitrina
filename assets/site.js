@@ -35,6 +35,7 @@ function cityToggle(){
   return `<div class="city" role="group" aria-label="Ваш город">${Object.entries(SELLERS).map(([k, s]) => `<button type="button" data-city="${k}" aria-pressed="${k === CITY}">${esc(s.city)}</button>`).join("")}</div>`;
 }
 
+function yearStr(it){ return Number(it.year) > new Date().getFullYear() ? "Новая модель " + it.year + " года" : String(it.year || ""); }
 function eta(it){
   if (it.stage === "moscow" || it.stage === "site") return "уже в Москве";
   if (it.etaText) return it.etaText;

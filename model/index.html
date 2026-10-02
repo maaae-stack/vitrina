@@ -53,7 +53,7 @@ if (!it) {
       ${imgs.length > 1 ? `<div class="thumbs" aria-label="Все фото">${imgs.map((src, i) => `<button type="button" data-th="${i}" aria-current="${i === 0}" aria-label="Фото ${i + 1}"><img src="${esc(src)}" alt="" loading="lazy"></button>`).join("")}</div>` : ""}
     </div>
     <div class="pane">
-      <div><h1>${esc(title(it))}</h1><div class="meta" style="font-size:16px">${esc(it.year)}, ${esc(it.color || "цвет уточняется")}</div></div>
+      <div><h1>${esc(title(it))}</h1><div class="meta" style="font-size:16px">${esc(yearStr(it))}, ${esc(it.color || "цвет уточняется")}</div></div>
       <div class="price">${priceHtml(it)}</div>
       <dl class="facts">
         <dt>Статус</dt><dd>${it.reserved ? "Забронировано" : esc(g.t) + (isFree(it) ? ", в свободной продаже" : "")}</dd>
