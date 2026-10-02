@@ -3,11 +3,12 @@
  "rate": 84.9,
  "rateDate": "2026-10-02",
  "epsmRub": 166000.0,
- "updated": "2026-10-03T03:22+04:00",
+ "updated": "2026-10-03T03:25+04:00",
  "items": [
   {
    "id": "example-2",
    "stage": "bought",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R",
    "year": "2026",
@@ -36,6 +37,7 @@
   {
    "id": "16k3q48lka07fl7hjtyy",
    "stage": "bought",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R",
    "year": "2026",
@@ -65,6 +67,7 @@
   {
    "id": "preorder-xmr-1",
    "stage": "preorder",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R MAX",
    "year": "2027",
@@ -89,6 +92,7 @@
   {
    "id": "preorder-xmr-2",
    "stage": "preorder",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R MAX",
    "year": "2027",
@@ -113,6 +117,7 @@
   {
    "id": "preorder-xmr-3",
    "stage": "preorder",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R MAX",
    "year": "2027",
@@ -137,6 +142,7 @@
   {
    "id": "preorder-xmr-4",
    "stage": "preorder",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R MAX",
    "year": "2027",
@@ -161,6 +167,7 @@
   {
    "id": "preorder-xmr-5",
    "stage": "preorder",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R MAX",
    "year": "2027",
@@ -185,6 +192,7 @@
   {
    "id": "preorder-xmr-6",
    "stage": "preorder",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R MAX",
    "year": "2027",
@@ -209,6 +217,7 @@
   {
    "id": "preorder-xmr-7",
    "stage": "preorder",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R MAX",
    "year": "2027",
@@ -233,6 +242,7 @@
   {
    "id": "offer-outlander-max-bc-1000r",
    "stage": "offer",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "MAX Backcountry 1000R",
    "year": "2026",
@@ -262,6 +272,7 @@
   {
    "id": "preorder-xmrx-1",
    "stage": "preorder",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R",
    "year": "2027",
@@ -283,6 +294,7 @@
   {
    "id": "preorder-xmrx-2",
    "stage": "preorder",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R",
    "year": "2027",
@@ -304,6 +316,7 @@
   {
    "id": "preorder-xmrx-3",
    "stage": "preorder",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R",
    "year": "2027",
@@ -325,6 +338,7 @@
   {
    "id": "preorder-xmrx-4",
    "stage": "preorder",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R",
    "year": "2027",
@@ -346,6 +360,7 @@
   {
    "id": "preorder-max-ltd-1",
    "stage": "preorder",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "MAX Limited 1000R",
    "year": "2027",
@@ -367,6 +382,7 @@
   {
    "id": "preorder-max-ltd-2",
    "stage": "preorder",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "MAX Limited 1000R",
    "year": "2027",
@@ -388,6 +404,7 @@
   {
    "id": "offer-max-ltd-2027-1",
    "stage": "offer",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "MAX Limited 1000R",
    "year": "2027",
@@ -409,6 +426,7 @@
   {
    "id": "preorder-xtp-ss-1",
    "stage": "preorder",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "MAX XT-P 1000R Smart-Shox",
    "year": "2027",
@@ -431,6 +449,7 @@
   {
    "id": "offer-xtp-2027-1",
    "stage": "offer",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "MAX XT-P 1000R",
    "year": "2027",
@@ -453,6 +472,7 @@
   {
    "id": "offer-xtp-2027-2",
    "stage": "offer",
+   "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "MAX XT-P 1000R",
    "year": "2027",
@@ -475,6 +495,7 @@
   {
    "id": "offer-skandic-le-2027-1",
    "stage": "offer",
+   "type": "Снегоход",
    "make": "SKI-DOO",
    "model": "Skandic LE 24\" 900 ACE",
    "year": "2027",
@@ -499,6 +520,7 @@
   {
    "id": "offer-expedition-le-2027-1",
    "stage": "offer",
+   "type": "Снегоход",
    "make": "SKI-DOO",
    "model": "Expedition LE 20\" 900 ACE",
    "year": "2027",
@@ -524,6 +546,7 @@
   {
    "id": "offer-expedition-xtreme-2027-1",
    "stage": "offer",
+   "type": "Снегоход",
    "make": "SKI-DOO",
    "model": "Expedition Xtreme 900 ACE Turbo R",
    "year": "2027",
