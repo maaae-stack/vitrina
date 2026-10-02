@@ -35,6 +35,14 @@ function cityToggle(){
   return `<div class="city" role="group" aria-label="Ваш город">${Object.entries(SELLERS).map(([k, s]) => `<button type="button" data-city="${k}" aria-pressed="${k === CITY}">${esc(s.city)}</button>`).join("")}</div>`;
 }
 
+function descHtml(it){
+  const t = String(it.desc || "").trim(); if (!t) return "";
+  const ps = t.split(/\n\s*\n/).map(p => p.trim()).filter(Boolean).map(p => {
+    const m = p.match(/^([^:\n]{2,40}):\s+([\s\S]+)$/);
+    return m ? `<p><b>${esc(m[1])}.</b> ${esc(m[2].charAt(0).toUpperCase() + m[2].slice(1))}</p>` : `<p>${esc(p)}</p>`;
+  }).join("");
+  return `<section class="desc" aria-labelledby="descH"><h2 id="descH">Описание</h2>${ps}</section>`;
+}
 function yearStr(it){ return Number(it.year) > new Date().getFullYear() ? "Новая модель " + it.year + " года" : String(it.year || ""); }
 function eta(it){
   if (it.stage === "moscow" || it.stage === "site") return "уже в Москве";

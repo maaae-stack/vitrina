@@ -254,3 +254,8 @@ footer [data-sitename]{font-size:28px}
 .payfull{margin-top:18px;border-left:4px solid var(--signal);background:var(--paper);border-radius:0 8px 8px 0;padding:14px 18px;max-width:760px}
 .payfull h3{font-size:21px}
 .payfull p{margin:6px 0 0;color:var(--fog)}
+
+.desc{max-width:72ch;margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}
+.desc h2{font-family:Oswald,sans-serif;font-weight:600;font-size:26px;margin:0 0 14px}
+.desc p{margin:0 0 14px;font-size:16px;line-height:1.6;color:var(--ink)}
+.desc p b{font-weight:700}

@@ -65,7 +65,7 @@ if (!it) {
       <div class="actions"><button class="btn primary" type="button" id="ask">${askLabel(it)}</button><button class="btn" type="button" id="share">Скопировать ссылку</button></div>
       <div class="note"><b>Цена — за технику в Москве.</b> Доставку до вашего города посчитаем отдельно. ЭПСМ по желанию: <b>+${fmt(DATA.epsmRub || 166000)} ₽</b>. Рубли посчитаны по курсу ${rateStr()} ₽ за 1 $, точную сумму назовёт продавец в день оплаты.</div>
       <p class="updated">${esc(updatedLine())}</p>
-    </div></div>`;
+    </div></div>${descHtml(it)}`;
   document.getElementById("ask").onclick = () => askAbout(it);
   document.getElementById("share").onclick = async () => {
     const url = location.origin + location.pathname + "?id=" + encodeURIComponent(it.ids[0]);
