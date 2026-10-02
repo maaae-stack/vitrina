@@ -3,7 +3,7 @@
  "rate": 84.9,
  "rateDate": "2026-10-02",
  "epsmRub": 166000.0,
- "updated": "2026-10-03T00:41+04:00",
+ "updated": "2026-10-03T00:43+04:00",
  "items": [
   {
    "id": "example-2",
@@ -435,7 +435,7 @@
    "model": "MAX XT-P 1000R",
    "year": "2027",
    "color": "Dusty Navy & Orange Crush",
-   "price": 0.0,
+   "price": 31500.0,
    "eta": "",
    "etaText": "3–4 недели после заказа",
    "dest": "",
@@ -457,7 +457,7 @@
    "model": "MAX XT-P 1000R",
    "year": "2027",
    "color": "Dusty Navy & Orange Crush",
-   "price": 0.0,
+   "price": 31500.0,
    "eta": "",
    "etaText": "3–4 недели после заказа",
    "dest": "",
