@@ -3,7 +3,7 @@
  "rate": 84.59,
  "rateDate": "2026-10-02",
  "epsmRub": 166000.0,
- "updated": "2026-10-02T16:14+04:00",
+ "updated": "2026-10-02T16:31+04:00",
  "items": [
   {
    "id": "example-2",
@@ -281,6 +281,74 @@
     "Двухместный (MAX)",
     "Код модели: 4MTF"
    ]
+  },
+  {
+   "id": "preorder-xmrx-1",
+   "stage": "preorder",
+   "make": "CAN-AM",
+   "model": "Outlander X mr 1000R",
+   "year": "2027",
+   "color": "",
+   "price": 0.0,
+   "eta": "",
+   "etaText": "",
+   "dest": "",
+   "reserved": false,
+   "imgs": [
+    "img/xmr-2027-1.jpg"
+   ],
+   "specs": []
+  },
+  {
+   "id": "preorder-xmrx-2",
+   "stage": "preorder",
+   "make": "CAN-AM",
+   "model": "Outlander X mr 1000R",
+   "year": "2027",
+   "color": "",
+   "price": 0.0,
+   "eta": "",
+   "etaText": "",
+   "dest": "",
+   "reserved": false,
+   "imgs": [
+    "img/xmr-2027-1.jpg"
+   ],
+   "specs": []
+  },
+  {
+   "id": "preorder-xmrx-3",
+   "stage": "preorder",
+   "make": "CAN-AM",
+   "model": "Outlander X mr 1000R",
+   "year": "2027",
+   "color": "",
+   "price": 0.0,
+   "eta": "",
+   "etaText": "",
+   "dest": "",
+   "reserved": false,
+   "imgs": [
+    "img/xmr-2027-1.jpg"
+   ],
+   "specs": []
+  },
+  {
+   "id": "preorder-xmrx-4",
+   "stage": "preorder",
+   "make": "CAN-AM",
+   "model": "Outlander X mr 1000R",
+   "year": "2027",
+   "color": "",
+   "price": 0.0,
+   "eta": "",
+   "etaText": "",
+   "dest": "",
+   "reserved": false,
+   "imgs": [
+    "img/xmr-2027-1.jpg"
+   ],
+   "specs": []
   }
  ]
 };/*DATA-END*/
