@@ -308,6 +308,25 @@
    "specs": [
     "Двухместный (MAX)"
    ]
+  },
+  {
+   "id": "preorder-max-ltd-2",
+   "stage": "preorder",
+   "make": "CAN-AM",
+   "model": "MAX Limited 1000R",
+   "year": "2027",
+   "color": "",
+   "price": 0.0,
+   "eta": "2027-01-15",
+   "etaText": "",
+   "dest": "",
+   "reserved": false,
+   "imgs": [
+    "img/max-ltd-2027-sq.jpg"
+   ],
+   "specs": [
+    "Двухместный (MAX)"
+   ]
   }
  ]
 };/*DATA-END*/
