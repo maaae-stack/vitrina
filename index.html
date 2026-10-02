@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Golos+Text:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=20261002">
+<link rel="stylesheet" href="assets/site.css?v=20261003b">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -42,7 +42,7 @@
   <section class="block" id="catalog">
     <div class="wrap">
       <div class="block-h"><div><h2>Техника</h2><p class="lead">Нажмите на модель, чтобы посмотреть все фото и подробности.</p></div></div>
-      <nav class="filter" id="filter" aria-label="Фильтр по наличию"></nav>
+      <div class="catnav"><nav class="kinds" id="kinds" aria-label="Вид техники" hidden></nav><nav class="filter" id="filter" aria-label="Фильтр по наличию"></nav></div>
       <div id="list"></div>
       <p class="updated" id="updated"></p>
     </div>
@@ -107,7 +107,7 @@
 <div class="sheet-bg" id="sheet" hidden></div>
 
 <script src="data.js?v=20261002b"></script>
-<script src="assets/site.js?v=20261003a"></script>
+<script src="assets/site.js?v=20261003b"></script>
 <script>
 let active = "all";
 function card(it){
@@ -121,14 +121,27 @@ function card(it){
       <div class="actions"><a class="btn" href="${modelUrl(it)}">Подробнее</a><button class="btn primary" type="button" data-ask="${esc(it.ids[0])}">${askLabel(it)}</button></div>
     </div></article>`;
 }
+const SNOW = `<svg viewBox="0 0 120 70" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 58h70c8 0 12-4 14-10M18 46h56l10-14h-24l-8-10H38l-6 14H18z"/><path d="M84 32l14 2M70 22l6-12"/><path d="M92 58h22c2 0 4-2 2-4"/></g></svg>`;
+const KIND_ICON = {atv: ATV, sxs: ATV, snow: SNOW, pwc: SNOW};
 function render(){
-  const byGroup = GROUPS.map(g => ({g, items: ALL.filter(it => g.stages.includes(it.stage))})).filter(x => x.items.length);
-  const total = ALL.reduce((a, i) => a + i.qty, 0);
-  document.getElementById("filter").innerHTML = `<button type="button" data-f="all" aria-pressed="${active === "all"}">Вся техника<span>${total}</span></button>` +
-    byGroup.map(x => `<button type="button" data-f="${x.g.k}" aria-pressed="${active === x.g.k}">${esc(x.g.t)}<span>${x.items.reduce((a, i) => a + i.qty, 0)}</span></button>`).join("");
-  document.getElementById("list").innerHTML = byGroup.length ? byGroup.filter(x => active === "all" || x.g.k === active).map(x =>
-    `<section class="grp"><div class="grp-h"><h3>${esc(x.g.t)}</h3><p>${esc(x.g.d)}</p></div><div class="grid">${x.items.map(card).join("")}</div></section>`).join("")
-    : `<p class="lead">Сейчас обновляем список. Оставьте заявку ниже, и мы подберём технику.</p>`;
+  const items = ALL;
+  const kinds = KINDS.map(k => ({k, items: items.filter(it => kindOf(it) === k.k)})).filter(x => x.items.length);
+  const qty = list => list.reduce((a, i) => a + i.qty, 0);
+  const kindsEl = document.getElementById("kinds");
+  kindsEl.hidden = kinds.length < 2;
+  kindsEl.innerHTML = kinds.map(x => `<a href="#kind-${x.k.k}">${KIND_ICON[x.k.k] || ""}${esc(x.k.t)}<span>${qty(x.items)}</span></a>`).join("");
+  const byGroup = GROUPS.map(g => ({g, items: items.filter(it => g.stages.includes(it.stage))})).filter(x => x.items.length);
+  document.getElementById("filter").innerHTML = `<button type="button" data-f="all" aria-pressed="${active === "all"}">Вся техника<span>${qty(items)}</span></button>` +
+    byGroup.map(x => `<button type="button" data-f="${x.g.k}" aria-pressed="${active === x.g.k}">${esc(x.g.t)}<span>${qty(x.items)}</span></button>`).join("");
+  const many = kinds.length > 1;
+  const html = kinds.map(x => {
+    const groups = GROUPS.filter(g => active === "all" || g.k === active).map(g => ({g, items: x.items.filter(it => g.stages.includes(it.stage))})).filter(y => y.items.length);
+    if (!groups.length) return "";
+    const H = many ? "h4" : "h3";
+    return `<section class="kind" id="kind-${x.k.k}">${many ? `<h3>${KIND_ICON[x.k.k] || ""}${esc(x.k.t)}</h3>` : ""}` +
+      groups.map(y => `<section class="grp"><div class="grp-h"><${H}>${esc(y.g.t)}</${H}><p>${esc(y.g.d)}</p></div><div class="grid">${y.items.map(card).join("")}</div></section>`).join("") + `</section>`;
+  }).join("");
+  document.getElementById("list").innerHTML = html || `<p class="lead">Сейчас обновляем список. Оставьте заявку ниже, и мы подберём технику.</p>`;
 }
 function route(){
   const cnt = st => ALL.filter(i => st.includes(i.stage)).reduce((a, i) => a + i.qty, 0);
@@ -150,6 +163,13 @@ document.getElementById("epsmFaq").textContent = fmt(DATA.epsmRub || 166000) + "
 render(); route();
 document.addEventListener("citychange", () => { route(); const s = document.querySelector("#reqForm [name=city]"); if (CITY) s.value = CITY; });
 if (CITY) document.querySelector("#reqForm [name=city]").value = CITY;
+document.getElementById("kinds").addEventListener("click", e => {
+  const a = e.target.closest("a[href^='#kind-']"); if (!a) return; e.preventDefault();
+  if (active !== "all") { active = "all"; render(); }
+  const el = document.querySelector(a.getAttribute("href")); if (!el) return;
+  const nav = document.querySelector(".catnav"), top = 60 + (nav ? nav.offsetHeight : 0) + 8;
+  window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - top, behavior: "smooth"});
+});
 document.getElementById("filter").addEventListener("click", e => { const b = e.target.closest("[data-f]"); if (!b) return; active = b.dataset.f; render(); });
 document.getElementById("list").addEventListener("click", e => { const b = e.target.closest("[data-ask]"); if (b) askAbout(findModel(b.dataset.ask)); });
 document.getElementById("reqForm").addEventListener("submit", e => {

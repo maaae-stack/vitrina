@@ -11,6 +11,13 @@ const GROUPS = [
   {k: "made",  t: "В производстве", d: "Заказано у завода, можно забронировать", pill: "p-made", stages: ["preorder"]},
   {k: "order", t: "Под заказ", d: "В наличии в Канаде, готовы к выкупу", pill: "p-order", stages: ["offer"]}
 ];
+const KINDS = [
+  {k: "atv",  t: "Квадроциклы", match: /квадро|atv/i},
+  {k: "sxs",  t: "Багги", match: /багги|мотовездеход|sxs|utv/i},
+  {k: "snow", t: "Снегоходы", match: /снегоход|snow/i},
+  {k: "pwc",  t: "Гидроциклы", match: /гидроцикл|pwc|sea-doo/i}
+];
+const kindOf = it => (KINDS.find(k => k.match.test(it.type || "")) || (/ski-doo|lynx/i.test(it.make || "") ? KINDS[2] : KINDS[0])).k;
 const MONTHS = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"];
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fmt = n => Math.round(n).toLocaleString("ru-RU");
@@ -59,7 +66,7 @@ function grouped(items){
   const map = new Map(); let n = 0;
   items.forEach(it => {
     const canGroup = it.stage === "preorder" || it.stage === "offer";
-    const key = canGroup ? [it.stage, it.make, it.model, it.year, it.color, it.price, it.eta, it.etaText, it.dest, it.reserved, (it.imgs || []).join(",")].join("|") : "u" + (++n);
+    const key = canGroup ? [it.stage, it.type, it.make, it.model, it.year, it.color, it.price, it.eta, it.etaText, it.dest, it.reserved, (it.imgs || []).join(",")].join("|") : "u" + (++n);
     if (!map.has(key)) map.set(key, {...it, qty: 0, ids: []});
     const g = map.get(key); g.qty++; g.ids.push(it.id);
   });
