@@ -115,7 +115,7 @@ function card(it){
   return `<article class="card">
     <div class="ph">${galleryHtml(it, false)}${pillsHtml(it)}${it.qty > 1 ? `<span class="qty">${it.qty} шт.</span>` : ""}</div>
     <div class="body">
-      <div><h4><a href="${modelUrl(it)}">${esc(title(it))}</a></h4><div class="meta">${esc(it.year)}, ${esc(it.color || "цвет уточняется")}${(it.specs || []).length ? ", " + it.specs.map(s => esc(s.toLowerCase())).join(", ") : ""}</div></div>
+      <div><h4><a href="${modelUrl(it)}">${esc(title(it))}</a></h4><div class="meta">${esc(it.year)}, ${esc(it.color || "цвет уточняется")}${(it.specs || []).length ? ", " + it.specs.map(s => esc(s)).join(", ") : ""}</div></div>
       <div class="price">${priceHtml(it)}</div>
       <dl class="facts"><dt>В Москве</dt><dd>${esc(eta(it))}</dd>${w ? `<dt>Где смотреть</dt><dd>${esc(w)}</dd>` : ""}</dl>
       <div class="actions"><a class="btn" href="${modelUrl(it)}">Подробнее</a><button class="btn primary" type="button" data-ask="${esc(it.ids[0])}">${askLabel(it)}</button></div>
