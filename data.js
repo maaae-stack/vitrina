@@ -3,7 +3,7 @@
  "rate": 84.59,
  "rateDate": "2026-10-02",
  "epsmRub": 166000.0,
- "updated": "2026-10-02T16:44+04:00",
+ "updated": "2026-10-02T16:46+04:00",
  "items": [
   {
    "id": "example-2",
@@ -176,66 +176,6 @@
   },
   {
    "id": "preorder-xmr-7",
-   "stage": "preorder",
-   "make": "CAN-AM",
-   "model": "XMR 1000R MAX",
-   "year": "2027",
-   "color": "Loft Green Satin",
-   "price": 28900.0,
-   "eta": "2027-01-15",
-   "etaText": "",
-   "dest": "",
-   "reserved": false,
-   "imgs": [
-    "img/xmr-max-2027-1.jpg",
-    "img/xmr-max-2027-2.jpg",
-    "img/xmr-max-2027-3.jpg",
-    "img/xmr-max-2027-4.jpg"
-   ],
-   "specs": []
-  },
-  {
-   "id": "preorder-xmr-8",
-   "stage": "preorder",
-   "make": "CAN-AM",
-   "model": "XMR 1000R MAX",
-   "year": "2027",
-   "color": "Loft Green Satin",
-   "price": 28900.0,
-   "eta": "2027-01-15",
-   "etaText": "",
-   "dest": "",
-   "reserved": false,
-   "imgs": [
-    "img/xmr-max-2027-1.jpg",
-    "img/xmr-max-2027-2.jpg",
-    "img/xmr-max-2027-3.jpg",
-    "img/xmr-max-2027-4.jpg"
-   ],
-   "specs": []
-  },
-  {
-   "id": "preorder-xmr-9",
-   "stage": "preorder",
-   "make": "CAN-AM",
-   "model": "XMR 1000R MAX",
-   "year": "2027",
-   "color": "Loft Green Satin",
-   "price": 28900.0,
-   "eta": "2027-01-15",
-   "etaText": "",
-   "dest": "",
-   "reserved": false,
-   "imgs": [
-    "img/xmr-max-2027-1.jpg",
-    "img/xmr-max-2027-2.jpg",
-    "img/xmr-max-2027-3.jpg",
-    "img/xmr-max-2027-4.jpg"
-   ],
-   "specs": []
-  },
-  {
-   "id": "preorder-xmr-10",
    "stage": "preorder",
    "make": "CAN-AM",
    "model": "XMR 1000R MAX",
