@@ -2,7 +2,8 @@
 const SITE = {name: "Из Канады.ру", word: "Из Канады", tld: ".ру"};
 const SELLERS = {
   pskov: {city: "Псков", name: "Лидер Авто", person: "Виктор", phone: "+7 911 355-99-66", whatsapp: "+79113559966", telegram: "+79113559966"},
-  tver:  {city: "Тверь", name: "Сервис Хрустовъ", person: "Александр", phone: "+7 996 135-42-55", whatsapp: "+79961354255", telegram: "+79961354255"}
+  tver:  {city: "Тверь", name: "Сервис Хрустовъ", person: "", phone: "+7 996 923-64-28", whatsapp: "+79969236428", telegram: "+79969236428",
+          lines: [{label: "Отдел продаж", phone: "+7 996 923-64-28"}, {label: "Сервисный центр", phone: "+7 996 137-38-37"}, {label: "Руководитель", phone: "+7 996 135-42-55"}]}
 };
 const GROUPS = [
   {k: "stock", t: "В наличии", d: "Можно посмотреть и забрать", pill: "p-stock", stages: ["moscow", "site"]},
@@ -119,11 +120,15 @@ async function copyText(t){
 }
 function toast(t){ const el = document.getElementById("toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => el.hidden = true, 2600); }
 function tgHref(s){ const t = String(s.telegram || ""); return "https://t.me/" + (/^\+?\d[\d\s()-]{6,}$/.test(t) ? "+" + digits(t) : t.replace(/^@|^https?:\/\/t\.me\//, "")); }
+const telHref = p => "tel:+" + digits(p);
+const sellerTitle = s => s.person ? s.person + ", " + s.name : s.name;
+const sellerLines = s => s.lines && s.lines.length ? s.lines : [{label: "", phone: s.phone}];
 function sellerBlock(key, text){
   const s = SELLERS[key];
-  return `<div class="seller"><div class="who">${esc(s.person)}, ${esc(s.name)}</div><div class="where">${esc(s.city)}</div>
-    <div class="tel"><span class="num">${esc(s.phone)}</span><button class="btn" type="button" data-copy="${esc(s.phone)}">Скопировать</button></div>
-    <div class="row"><a class="btn primary" href="https://wa.me/${digits(s.whatsapp)}?text=${encodeURIComponent(text)}" target="_blank" rel="noopener">WhatsApp</a><a class="btn" href="${tgHref(s)}" target="_blank" rel="noopener">Telegram</a></div></div>`;
+  return `<div class="seller"><div class="who">${esc(sellerTitle(s))}</div><div class="where">${esc(s.city)}</div>
+    ${sellerLines(s).map(l => `<div class="tel">${l.label ? `<span class="lbl">${esc(l.label)}</span>` : ""}<a class="num" href="${telHref(l.phone)}">${esc(l.phone)}</a><button class="btn" type="button" data-copy="${esc(l.phone)}">Скопировать</button></div>`).join("")}
+    <div class="row"><a class="btn primary" href="https://wa.me/${digits(s.whatsapp)}?text=${encodeURIComponent(text)}" target="_blank" rel="noopener">WhatsApp</a><a class="btn" href="${tgHref(s)}" target="_blank" rel="noopener">Telegram</a></div>
+    ${s.lines && s.lines.length > 1 ? `<div class="where" style="margin-top:6px">WhatsApp и Telegram — ${esc(s.lines[0].label.toLowerCase())}</div>` : ""}</div>`;
 }
 function openSheet(heading, sub, text){
   const el = document.getElementById("sheet");
@@ -158,6 +163,6 @@ function frame(){
   document.querySelectorAll("[data-sitename]").forEach(el => el.innerHTML = `<span class="w">${esc(SITE.word)}</span><span class="t">${esc(SITE.tld)}</span>`);
   const ct = document.getElementById("cityToggle"); if (ct) ct.innerHTML = cityToggle();
   const f = document.getElementById("footSellers");
-  if (f) f.innerHTML = Object.values(SELLERS).map(s => `<div><h3>${esc(s.city)}</h3><p>${esc(s.name)}, ${esc(s.person)}</p><p><a class="tel num" href="tel:${digits(s.phone).replace(/^/, "+")}">${esc(s.phone)}</a></p><p>WhatsApp и Telegram на этом же номере</p></div>`).join("");
+  if (f) f.innerHTML = Object.values(SELLERS).map(s => `<div><h3>${esc(s.city)}</h3><p>${esc(sellerTitle(s))}</p>${sellerLines(s).map(l => `<p>${l.label ? `<span class="flbl">${esc(l.label)}</span><br>` : ""}<a class="tel num" href="${telHref(l.phone)}">${esc(l.phone)}</a></p>`).join("")}<p>${s.lines && s.lines.length > 1 ? "WhatsApp и Telegram — " + esc(s.lines[0].label.toLowerCase()) : "WhatsApp и Telegram на этом же номере"}</p></div>`).join("");
   const u = document.getElementById("updated"); if (u) u.textContent = updatedLine();
 }

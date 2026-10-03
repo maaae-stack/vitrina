@@ -204,7 +204,10 @@ footer .small{font-size:13px;color:#93a39a;margin-top:28px}
 .seller{border:1px solid var(--line);border-radius:8px;padding:12px}
 .seller .who{font-weight:600}
 .seller .where{color:var(--fog);font-size:14px}
-.seller .tel .num{white-space:nowrap}
+.seller .tel .num{white-space:nowrap;color:inherit;text-decoration:none}
+.seller .tel .lbl{flex:1 1 100%;font-size:13px;font-weight:600;color:var(--fog);margin-bottom:-6px}
+.seller .tel{flex-wrap:wrap}
+footer .flbl{font-size:13px;opacity:.75}
 .seller .tel{display:flex;align-items:center;gap:8px;justify-content:space-between;margin-top:8px;font-size:18px;font-weight:600}
 .seller .row{display:flex;gap:8px;margin-top:10px}
 .seller .row .btn{flex:1}
