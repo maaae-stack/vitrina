@@ -84,7 +84,7 @@ function pillsHtml(it){
 function galleryHtml(it, eager){
   const imgs = it.imgs || [], alt = esc(title(it) + " " + it.year);
   if (!imgs.length) return `<div class="noimg">${ATV}<span>Фото добавим</span></div>`;
-  return `<div class="gal" tabindex="0" aria-label="Фото, листайте">${imgs.map((src, i) => `<img src="${esc(src)}" alt="${alt}, фото ${i + 1}" loading="${i || !eager ? "lazy" : "eager"}" decoding="async">`).join("")}</div>`
+  return `<div class="gal" tabindex="0" aria-label="Фото, листайте">${imgs.map((src, i) => `<img src="${esc(src)}?v=43" alt="${alt}, фото ${i + 1}" loading="${i || !eager ? "lazy" : "eager"}" decoding="async">`).join("")}</div>`
     + (imgs.length > 1 ? `<button class="gnav prev" type="button" data-gal="-1" aria-label="Предыдущее фото">‹</button><button class="gnav next" type="button" data-gal="1" aria-label="Следующее фото">›</button><div class="dots">${imgs.map((_, i) => `<i class="${i ? "" : "on"}"></i>`).join("")}</div>` : "");
 }
 function priceHtml(it){
