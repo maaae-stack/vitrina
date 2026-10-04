@@ -4,7 +4,7 @@
  "rubMarkup": 1.65,
  "rateDate": "2026-10-04",
  "epsmRub": 166000.0,
- "updated": "2026-10-04T22:30+04:00",
+ "updated": "2026-10-04T22:32+04:00",
  "items": [
   {
    "id": "example-2",
@@ -606,7 +606,7 @@
    "model": "Renegade X-RS 900 ACE Turbo R",
    "year": "2027",
    "color": "Circuit Yellow",
-   "price": 0.0,
+   "price": 33300.0,
    "eta": "",
    "etaText": "3–4 недели после заказа",
    "dest": "",
