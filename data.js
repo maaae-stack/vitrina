@@ -4,7 +4,7 @@
  "rubMarkup": 1.65,
  "rateDate": "2026-10-04",
  "epsmRub": 166000.0,
- "updated": "2026-10-04T22:32+04:00",
+ "updated": "2026-10-04T22:33+04:00",
  "items": [
   {
    "id": "example-2",
@@ -612,8 +612,8 @@
    "dest": "",
    "reserved": false,
    "imgs": [
-    "img/renegade-xrs-2027-2.jpg",
     "img/renegade-xrs-2027-1.jpg",
+    "img/renegade-xrs-2027-2.jpg",
     "img/renegade-xrs-2027-3.jpg",
     "img/renegade-xrs-2027-4.jpg",
     "img/renegade-xrs-2027-5.jpg",
