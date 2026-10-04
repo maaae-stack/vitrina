@@ -1,0 +1,24 @@
+name: Daily rate
+on:
+  schedule:
+    - cron: "47 3 * * *"   # 06:47 МСК
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  rate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update rate and date
+        run: python3 .github/update_rate.py
+      - name: Commit
+        run: |
+          git config user.name "maaae-stack"
+          git config user.email "maaae-stack@users.noreply.github.com"
+          if ! git diff --quiet data.js; then
+            git commit -am "Курс ЦБ + надбавка на $(TZ=Europe/Moscow date +%d.%m)"
+            git push
+          else
+            echo "Курс на сегодня уже стоит, ничего не меняю"
+          fi
