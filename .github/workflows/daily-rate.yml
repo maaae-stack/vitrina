@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: "47 3 * * *"   # 06:47 МСК
   workflow_dispatch:
+    inputs:
+      dry:
+        description: "Только проверить курс ЦБ, ничего не менять"
+        type: boolean
+        default: false
 permissions:
   contents: write
 jobs:
@@ -11,6 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Update rate and date
+        env:
+          DRY: ${{ inputs.dry }}
         run: python3 .github/update_rate.py
       - name: Commit
         run: |
