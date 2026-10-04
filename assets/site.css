@@ -114,10 +114,10 @@ section.block{padding:52px 0 8px}
 .card .actions .btn.primary{flex:1 1 150px}
 
 /* Photo gallery */
-.ph{position:relative;aspect-ratio:1/1;background:var(--paper-2);overflow:hidden}
+.ph{position:relative;aspect-ratio:4/3;background:var(--paper-2);overflow:hidden}
 .gal{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
 .gal::-webkit-scrollbar{display:none}
-.gal img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start}
+.gal img{flex:0 0 100%;width:100%;height:100%;object-fit:contain;scroll-snap-align:start}
 .gnav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:0;background:rgba(10,15,12,.55);color:#fff;font-size:20px;line-height:38px;text-align:center;cursor:pointer;opacity:0;transition:opacity .15s}
 .ph:hover .gnav,.gnav:focus-visible{opacity:1}
 .gnav.prev{left:8px}.gnav.next{right:8px}
@@ -276,3 +276,5 @@ footer [data-sitename]{font-size:28px}
 .kind>h3 svg{width:42px;height:26px;color:var(--fog)}
 .kind .grp-h h4{font-size:21px;margin:0}
 @media (max-width:480px){.kinds a{padding:7px 10px;font-size:15px;gap:6px}.kinds a svg{width:24px;height:16px}.kind>h3{font-size:26px}}
+
+.gal img.fill{object-fit:cover}
