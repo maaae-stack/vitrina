@@ -2,6 +2,7 @@ name: Daily rate
 on:
   schedule:
     - cron: "47 3 * * *"   # 06:47 МСК
+    - cron: "17 4,5,6,8 * * *"   # повторы, если GitHub задержал запуск (скрипт ничего не меняет, если дата уже сегодняшняя)
   workflow_dispatch:
     inputs:
       dry:
