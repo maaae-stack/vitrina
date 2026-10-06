@@ -278,3 +278,7 @@ footer [data-sitename]{font-size:28px}
 @media (max-width:480px){.kinds a{padding:7px 10px;font-size:15px;gap:6px}.kinds a svg{width:24px;height:16px}.kind>h3{font-size:26px}}
 
 .gal img.fill{object-fit:cover}
+
+.logo .logo-img{height:78px;width:auto;display:block;margin:4px 0 4px -6px}
+@media (max-width:440px){.logo .logo-img{height:58px;margin-left:-4px}}
+@media (max-width:360px){.logo .logo-img{height:50px}}
