@@ -4,7 +4,7 @@
  "rubMarkup": 1.65,
  "rateDate": "2026-10-08",
  "epsmRub": 166000.0,
- "updated": "2026-10-09T02:25+04:00",
+ "updated": "2026-10-09T02:27+04:00",
  "items": [
   {
    "id": "example-2",
@@ -561,7 +561,7 @@
    "model": "Summit X 154 850 E-TEC Turbo R",
    "year": "2027",
    "color": "Airy Blue",
-   "price": 31600.0,
+   "price": 32400.0,
    "eta": "",
    "etaText": "3–4 недели после заказа",
    "dest": "",
