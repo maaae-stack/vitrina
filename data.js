@@ -4,7 +4,7 @@
  "rubMarkup": 1.65,
  "rateDate": "2026-10-08",
  "epsmRub": 166000.0,
- "updated": "2026-10-09T02:30+04:00",
+ "updated": "2026-10-09T02:32+04:00",
  "items": [
   {
    "id": "example-2",
@@ -676,7 +676,7 @@
    "model": "Backcountry X 850 E-TEC",
    "year": "2027",
    "color": "Black",
-   "price": 26700.0,
+   "price": 27000.0,
    "eta": "",
    "etaText": "3–4 недели после заказа",
    "dest": "",
