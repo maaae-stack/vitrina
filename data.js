@@ -4,7 +4,7 @@
  "rubMarkup": 1.65,
  "rateDate": "2026-10-08",
  "epsmRub": 166000.0,
- "updated": "2026-10-09T02:20+04:00",
+ "updated": "2026-10-09T02:25+04:00",
  "items": [
   {
    "id": "example-2",
@@ -534,7 +534,7 @@
    "model": "Expedition Xtreme 900 ACE Turbo R",
    "year": "2027",
    "color": "Black",
-   "price": 30500.0,
+   "price": 30700.0,
    "eta": "",
    "etaText": "3–4 недели после заказа",
    "dest": "",
