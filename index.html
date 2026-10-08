@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Golos+Text:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=20261006b">
+<link rel="stylesheet" href="assets/site.css?v=20261009a">
 <link rel="icon" href="img/favicon-64.png?v=1" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=1">
 </head>
@@ -17,7 +17,7 @@
 <header class="top">
   <div class="wrap">
     <a class="logo" href="./"><img class="logo-img" src="img/logo-header.png?v=1" alt="Из Канады.ру" width="157" height="60"></a>
-    <nav class="topnav" aria-label="Разделы"><a href="#catalog">Техника</a><a href="#how">Как мы работаем</a><a href="#faq">Вопросы</a><a href="#request">Заявка</a></nav>
+    <nav class="topnav" aria-label="Разделы"><a href="#catalog">Техника</a><a href="#calc">Калькулятор</a><a href="#how">Как мы работаем</a><a href="#faq">Вопросы</a><a href="#request">Заявка</a></nav>
     <div id="cityToggle"></div>
   </div>
 </header>
@@ -46,6 +46,33 @@
       <div class="catnav"><nav class="kinds" id="kinds" aria-label="Вид техники" hidden></nav><nav class="filter" id="filter" aria-label="Фильтр по наличию"></nav></div>
       <div id="list"></div>
       <p class="updated" id="updated"></p>
+    </div>
+  </section>
+
+  <section class="block" id="calc" hidden>
+    <div class="wrap">
+      <div class="block-h"><div><h2>Калькулятор</h2><p class="lead">Нашли технику в Канаде? Введите цену из объявления и узнайте, сколько она будет стоить с доставкой в Москву.</p></div></div>
+      <div class="calc-box">
+        <div class="calc-in">
+          <div class="seg" role="radiogroup" aria-label="Тип техники">
+            <button type="button" role="radio" aria-checked="true" data-ctype="q">Квадроцикл</button>
+            <button type="button" role="radio" aria-checked="false" data-ctype="s">Снегоход</button>
+          </div>
+          <div class="seg" role="radiogroup" aria-label="Продавец">
+            <button type="button" role="radio" aria-checked="true" data-cseller="d">У дилера</button>
+            <button type="button" role="radio" aria-checked="false" data-cseller="p">У частного лица</button>
+          </div>
+          <label class="calc-lbl" for="calcPrice">Цена в Канаде, C$ (без налогов)</label>
+          <input id="calcPrice" class="calc-price num" inputmode="decimal" autocomplete="off" placeholder="например, 23 000">
+        </div>
+        <div class="calc-out" aria-live="polite">
+          <div class="calc-cap">Стоимость в Москве</div>
+          <div class="calc-usd num" id="calcUsd">—</div>
+          <div class="calc-rub num" id="calcRub"></div>
+          <p class="calc-note">Предварительный расчёт под ключ: выкуп, доставка и растаможка. Точную цену подтвердим после проверки объявления.</p>
+          <button type="button" class="btn primary" id="calcAsk" hidden>Узнать точную цену</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -108,7 +135,7 @@
 <div class="sheet-bg" id="sheet" hidden></div>
 
 <script src="data.js?v=20261002b"></script>
-<script src="assets/site.js?v=20261004b"></script>
+<script src="assets/site.js?v=20261009a"></script>
 <script>
 let active = "all";
 function card(it){

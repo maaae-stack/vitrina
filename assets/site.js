@@ -170,3 +170,40 @@ function frame(){
 /* Photos close to the 4:3 frame (incl. square) fill it; tall or very wide ones are shown whole on a plain background */
 function fitPhoto(img){ const r = img.naturalWidth / img.naturalHeight; if (r >= 0.95 && r <= 1.55) img.classList.add("fill"); }
 document.addEventListener("load", e => { const t = e.target; if (t && t.tagName === "IMG" && t.closest(".gal")) fitPhoto(t); }, true);
+
+/* Price calculator: dealer price in C$ -> turnkey price in Moscow (main site only) */
+(function(){
+  const C = DATA.calc, box = document.getElementById("calc");
+  if (!C || !box) return;
+  box.hidden = false;
+  let T = "q", P = "d";
+  const inp = document.getElementById("calcPrice"), outU = document.getElementById("calcUsd"), outR = document.getElementById("calcRub"), ask = document.getElementById("calcAsk");
+  const num = v => { const x = parseFloat(String(v || "").replace(/\s/g, "").replace(",", ".")); return isFinite(x) ? x : 0; };
+  function total(price){
+    const buy = price * (1 + (P === "p" ? C.taxP : C.taxD) / 100) / C.buy;
+    const air = (T === "s" ? C.airS : C.airQ) / C.airR, yul = C.yul / C.airR, ab = T === "s" ? C.abS : C.abQ;
+    const fin = buy + yul + air + ab;
+    const cost = fin + C.cust + fin * C.fin / 100 * C.days / C.per;
+    return Math.ceil((cost + C.mk) / 100) * 100;
+  }
+  function calc(){
+    const p = num(inp.value);
+    if (p < 1000){ outU.textContent = "—"; outR.textContent = ""; ask.hidden = true; return; }
+    const t = total(p);
+    outU.textContent = fmt(t) + " $";
+    outR.textContent = DATA.rate ? "≈ " + fmt(Math.round(t * DATA.rate / 100) * 100) + " ₽ по курсу " + rateStr() + " ₽" : "";
+    ask.hidden = false;
+  }
+  function seg(attr, val){ box.querySelectorAll(`[${attr}]`).forEach(b => b.setAttribute("aria-checked", String(b.getAttribute(attr) === val))); }
+  box.addEventListener("click", e => {
+    const t = e.target.closest("[data-ctype]"); if (t){ T = t.dataset.ctype; seg("data-ctype", T); calc(); return; }
+    const s = e.target.closest("[data-cseller]"); if (s){ P = s.dataset.cseller; seg("data-cseller", P); calc(); }
+  });
+  inp.addEventListener("input", calc);
+  inp.addEventListener("blur", () => { const p = num(inp.value); if (p) inp.value = fmt(p); });
+  ask.addEventListener("click", () => {
+    const p = num(inp.value), kind = T === "s" ? "снегоход" : "квадроцикл";
+    const text = "Здравствуйте! Посчитал на сайте " + kind + " за " + fmt(p) + " C$ (" + (P === "p" ? "у частного лица" : "у дилера") + "), вышло " + outU.textContent + ". Хочу узнать точную цену, пришлю ссылку на объявление.";
+    openSheet("Точная цена", kind[0].toUpperCase() + kind.slice(1) + ", " + outU.textContent, text);
+  });
+})();
