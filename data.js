@@ -4,7 +4,7 @@
  "rubMarkup": 1.65,
  "rateDate": "2026-10-08",
  "epsmRub": 166000.0,
- "updated": "2026-10-09T02:28+04:00",
+ "updated": "2026-10-09T02:30+04:00",
  "items": [
   {
    "id": "example-2",
@@ -618,7 +618,7 @@
    "model": "MXZ X 137 600RR E-TEC",
    "year": "2027",
    "color": "Black",
-   "price": 27700.0,
+   "price": 28200.0,
    "eta": "",
    "etaText": "3–4 недели после заказа",
    "dest": "",
