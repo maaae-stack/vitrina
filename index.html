@@ -108,13 +108,13 @@
   <section class="block" id="request">
     <div class="wrap">
       <div class="req">
-        <div><h2>Подберём технику под задачу</h2><p class="lead">Опишите, что ищете. Заявка откроется в WhatsApp или Telegram у продавца в вашем городе, сайт ничего не сохраняет.</p></div>
+        <div><h2>Подберём технику под задачу</h2><p class="lead">Опишите, что ищете, или вставьте ссылку на понравившуюся технику. Заявка откроется в WhatsApp или Telegram у продавца в вашем городе, сайт ничего не сохраняет.</p></div>
         <form id="reqForm" novalidate>
           <label>Ваше имя<input name="name" autocomplete="given-name" required></label>
           <label>Город<select name="city" id="reqCity"></select></label>
           <label>Что ищете<select name="kind"><option>Квадроцикл</option><option>Двухместный квадроцикл</option><option>Багги (SSV)</option><option>Снегоход</option><option>Гидроцикл</option><option>Пока не знаю</option></select></label>
           <label>Бюджет, $<input name="budget" inputmode="numeric" placeholder="например, 28 000"></label>
-          <label class="full">Пожелания<textarea name="wish" placeholder="Модель, цвет, для чего: охота, рыбалка, катание вдвоём…"></textarea></label>
+          <label class="full">Пожелания или ссылка на технику<textarea name="wish" placeholder="Вставьте ссылку на объявление с нашего сайта или с shoparide.ca — выкупим именно эту технику. Или опишите: модель, цвет, для чего (охота, рыбалка, катание вдвоём…)"></textarea></label>
           <div class="send"><button class="btn primary" type="submit" data-via="wa">Отправить в WhatsApp</button><button class="btn" type="submit" data-via="tg">Отправить в Telegram</button><span class="hint" id="reqHint"></span></div>
         </form>
       </div>
@@ -202,7 +202,7 @@ document.getElementById("reqForm").addEventListener("submit", e => {
   const f = e.target, v = k => f.elements[k].value.trim();
   if (!v("name")) { document.getElementById("reqHint").textContent = "Напишите, как к вам обращаться"; f.elements.name.focus(); return; }
   const s = SELLERS[v("city")]; setCity(v("city"));
-  const text = `Здравствуйте! Меня зовут ${v("name")}. Ищу: ${v("kind")}.` + (v("budget") ? ` Бюджет: ${v("budget")} $.` : "") + (v("wish") ? ` ${v("wish")}` : "");
+  const text = `Здравствуйте! Меня зовут ${v("name")}. Ищу: ${v("kind")}.` + (v("budget") ? ` Бюджет: ${v("budget")} $.` : "") + (v("wish") ? (/https?:\/\/\S+/.test(v("wish")) ? ` Хочу выкупить эту технику: ${v("wish")}` : ` ${v("wish")}`) : "");
   const via = (e.submitter && e.submitter.dataset.via) || "wa";
   const url = via === "tg" ? tgHref(s) : `https://wa.me/${digits(s.whatsapp)}?text=${encodeURIComponent(text)}`;
   if (via === "tg") { copyText(text).then(ok => { if (ok) toast("Текст заявки скопирован, вставьте его в чат"); }); }
