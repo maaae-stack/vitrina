@@ -300,3 +300,5 @@ footer [data-sitename]{font-size:28px}
 .calc-note{font-size:13px;color:#a9b8ae;margin:8px 0 6px;max-width:42ch}
 .calc-out .btn{align-self:flex-start}
 @media (max-width:440px){.calc-usd{font-size:40px}.calc-in,.calc-out{padding:18px}}
+.calc-src{margin:0;font-size:15px;color:var(--ink)}
+.calc-src a{white-space:nowrap;color:var(--signal);font-weight:600;text-decoration:underline;text-underline-offset:3px}
