@@ -4,7 +4,7 @@
  "rubMarkup": 1.65,
  "rateDate": "2026-10-08",
  "epsmRub": 166000.0,
- "updated": "2026-10-09T02:16+04:00",
+ "updated": "2026-10-09T02:18+04:00",
  "items": [
   {
    "id": "example-2",
@@ -705,7 +705,7 @@
    "model": "Skandic LE 20\" 600 EFI",
    "year": "2027",
    "color": "Black",
-   "price": 22700.0,
+   "price": 23200.0,
    "eta": "",
    "etaText": "3–4 недели после заказа",
    "dest": "",
