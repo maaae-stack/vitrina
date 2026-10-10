@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Golos+Text:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=20261009b">
+<link rel="stylesheet" href="assets/site.css?v=20261011a">
 <link rel="icon" href="img/favicon-64.png?v=1" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=1">
 </head>
@@ -40,6 +40,35 @@
 </section>
 
 <main>
+  <section class="focus" id="focus" aria-labelledby="focusTitle">
+    <div class="wrap focus-row">
+      <a class="focus-stage" id="focusLink" href="model/?id=16k3q48lka07fl7hjtyy" aria-label="Подробнее о Can-Am Outlander X mr 1000R">
+        <img class="on" src="img/focus-xmr-1.jpg" alt="" loading="lazy">
+        <img src="img/focus-xmr-2.jpg" alt="" loading="lazy">
+        <img src="img/focus-xmr-3.jpg" alt="" loading="lazy">
+        <img src="img/focus-xmr-4.jpg" alt="" loading="lazy">
+        <span class="focus-mud" aria-hidden="true"></span>
+        <span class="focus-tag">В фокусе</span>
+      </a>
+      <div class="focus-info">
+        <p class="focus-eyebrow">Can-Am · модель 2026 года</p>
+        <h2 id="focusTitle">Outlander X mr 1000R</h2>
+        <p class="focus-sub">Одноместный «болотник» для грязи, воды и глубокой колеи.</p>
+        <div class="focus-stat" aria-live="off">
+          <div class="focus-num num"><span id="focusVal">101</span><small id="focusUnit">л.с.</small></div>
+          <div class="focus-lbl" id="focusLbl">Rotax V-twin 1000 см³, 94 Н·м</div>
+          <div class="focus-dots" id="focusDots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+        </div>
+        <ul class="focus-list">
+          <li>Шноркели и радиатор наверху — не боится воды</li>
+          <li>Лебёдка HD3500 с синтетическим тросом</li>
+          <li>Привод 4WD с блокировкой Visco-4Lok</li>
+        </ul>
+        <div class="focus-buy"><div class="focus-price num" id="focusPrice"></div><a class="btn primary" href="model/?id=16k3q48lka07fl7hjtyy">Подробнее</a></div>
+      </div>
+    </div>
+  </section>
+
   <section class="block" id="catalog">
     <div class="wrap">
       <div class="block-h"><div><h2>Техника</h2><p class="lead">Нажмите на модель, чтобы посмотреть все фото и подробности.</p></div></div>
@@ -132,7 +161,7 @@
 <div class="sheet-bg" id="sheet" hidden></div>
 
 <script src="data.js?v=20261002b"></script>
-<script src="assets/site.js?v=20261009a"></script>
+<script src="assets/site.js?v=20261011a"></script>
 <script>
 let active = "all";
 function card(it){
