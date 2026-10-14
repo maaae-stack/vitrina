@@ -183,7 +183,7 @@ document.addEventListener("load", e => { const t = e.target; if (t && t.tagName 
     const buy = price * (1 + (P === "p" ? C.taxP : C.taxD) / 100) / C.buy;
     const air = (T === "s" ? C.airS : C.airQ) / C.airR, yul = C.yul / C.airR, ab = T === "s" ? C.abS : C.abQ;
     const fin = buy + yul + air + ab;
-    const cost = fin + C.cust + fin * C.fin / 100 * C.days / C.per;
+    const cost = fin + (T === "s" && C.custS ? C.custS : C.cust) + fin * C.fin / 100 * C.days / C.per;
     return Math.ceil((cost + C.mk) / 100) * 100;
   }
   function calc(){
