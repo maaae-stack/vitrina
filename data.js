@@ -4,11 +4,11 @@
  "rubMarkup": 1.65,
  "rateDate": "2026-10-21",
  "epsmRub": 166000.0,
- "updated": "2026-10-21T11:53:54+03:00",
+ "updated": "2026-10-21T19:33+04:00",
  "items": [
   {
    "id": "example-2",
-   "stage": "bought",
+   "stage": "bishkek",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R",
@@ -37,7 +37,7 @@
   },
   {
    "id": "16k3q48lka07fl7hjtyy",
-   "stage": "bought",
+   "stage": "bishkek",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R",
@@ -384,7 +384,7 @@
   },
   {
    "id": "offer-max-ltd-2027-1",
-   "stage": "bought",
+   "stage": "bishkek",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "MAX Limited 1000R",
@@ -745,6 +745,5 @@
   "per": 30.0,
   "days": 30,
   "mk": 3000.0
- },
- "rateSource": "cbr"
+ }
 };/*DATA-END*/
