@@ -1,10 +1,10 @@
 /* Generated from the internal tracker. Only client-safe fields. */
 /*DATA-START*/const DATA = {
- "rate": 84.54,
+ "rate": 83.62,
  "rubMarkup": 1.65,
- "rateDate": "2026-10-21",
+ "rateDate": "2026-10-22",
  "epsmRub": 166000.0,
- "updated": "2026-10-21T19:33+04:00",
+ "updated": "2026-10-22T11:56:30+03:00",
  "items": [
   {
    "id": "example-2",
@@ -745,5 +745,6 @@
   "per": 30.0,
   "days": 30,
   "mk": 3000.0
- }
+ },
+ "rateSource": "cbr"
 };/*DATA-END*/
