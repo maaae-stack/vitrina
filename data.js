@@ -4,7 +4,7 @@
  "rubMarkup": 1.65,
  "rateDate": "2026-10-22",
  "epsmRub": 166000.0,
- "updated": "2026-10-22T11:56:30+03:00",
+ "updated": "2026-10-22T19:35+04:00",
  "items": [
   {
    "id": "example-2",
@@ -737,14 +737,13 @@
   "airS": 4350.0,
   "airR": 1.42,
   "yul": 1000.0,
-  "abQ": 820.0,
-  "abS": 820.0,
+  "abQ": 700.0,
+  "abS": 700.0,
   "cust": 2500.0,
   "custS": 3000.0,
   "fin": 2.0,
   "per": 30.0,
   "days": 30,
   "mk": 3000.0
- },
- "rateSource": "cbr"
+ }
 };/*DATA-END*/
