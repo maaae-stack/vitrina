@@ -7,7 +7,7 @@ const SELLERS = {
 };
 const GROUPS = [
   {k: "stock", t: "В наличии", d: "Можно посмотреть и забрать", pill: "p-stock", stages: ["moscow", "site"]},
-  {k: "road",  t: "В пути", d: "Едет в Москву", pill: "p-road", stages: ["air", "bishkek"]},
+  {k: "road",  t: "В пути", d: "Едет в Москву", pill: "p-road", stages: ["air", "bishkek", "road"]},
   {k: "ready", t: "Выкуплено", d: "Уже наше, готовится к отправке из Канады", pill: "p-road", stages: ["deposit", "bought"]},
   {k: "made",  t: "В производстве", d: "Заказано у завода, можно забронировать", pill: "p-made", stages: ["preorder"]},
   {k: "order", t: "Под заказ", d: "В наличии в Канаде, готовы к выкупу", pill: "p-order", stages: ["offer"]}
@@ -76,7 +76,7 @@ function grouped(items){
 const ALL = grouped(DATA.items);
 const findModel = id => ALL.find(g => g.ids.includes(id));
 const title = it => [it.make, it.model].filter(Boolean).join(" ");
-const isFree = it => !it.reserved && ["deposit", "bought", "air", "bishkek", "moscow", "site"].includes(it.stage);
+const isFree = it => !it.reserved && ["deposit", "bought", "air", "bishkek", "road", "moscow", "site"].includes(it.stage);
 function pillsHtml(it){
   const g = groupOf(it);
   return `<div class="pills">${it.reserved ? `<span class="pill p-res">Забронировано</span>` : `<span class="pill ${g.pill}">${esc(g.t)}</span>`}${isFree(it) && !["moscow","site"].includes(it.stage) ? `<span class="pill p-free">В свободной продаже</span>` : ""}</div>`;

@@ -132,7 +132,7 @@
 <div class="sheet-bg" id="sheet" hidden></div>
 
 <script src="data.js?v=20261002b"></script>
-<script src="assets/site.js?v=20261014a"></script>
+<script src="assets/site.js?v=20261028a"></script>
 <script>
 let active = "all";
 function card(it){
@@ -172,7 +172,7 @@ function route(){
   const cnt = st => ALL.filter(i => st.includes(i.stage)).reduce((a, i) => a + i.qty, 0);
   const legs = [
     {place: "Канада", what: "выкуп у дилера", n: cnt(["preorder","deposit","bought"]), w: "ед. выкуплено и заказано"},
-    {place: "Алматы → Бишкек", what: "авиа и растаможка", n: cnt(["air","bishkek"]), w: "ед. в пути"},
+    {place: "Алматы → Бишкек", what: "авиа и растаможка", n: cnt(["air","bishkek","road"]), w: "ед. в пути"},
     {place: "Москва", what: "здесь цена техники, ЭПСМ по желанию", n: cnt(["moscow"]), w: "ед. в Москве"},
     {place: CITY ? SELLERS[CITY].city : "Ваш город", what: CITY ? "показ и продажа: " + SELLERS[CITY].name : "показ и продажа у наших партнёров", n: cnt(["site"]), w: "ед. на площадке"}
   ];
