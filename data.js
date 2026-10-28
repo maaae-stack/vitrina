@@ -4,7 +4,7 @@
  "rubMarkup": 1.65,
  "rateDate": "2026-10-28",
  "epsmRub": 166000.0,
- "updated": "2026-10-28T14:30+04:00",
+ "updated": "2026-10-28T14:35+04:00",
  "items": [
   {
    "id": "example-2",
@@ -833,7 +833,7 @@
    "model": "Skandic LE 20\" 900 ACE",
    "year": "2027",
    "color": "Black",
-   "price": 0.0,
+   "price": 26500.0,
    "eta": "",
    "etaText": "",
    "dest": "",
@@ -855,7 +855,7 @@
    "model": "Skandic LE 20\" 900 ACE",
    "year": "2027",
    "color": "Black",
-   "price": 0.0,
+   "price": 26500.0,
    "eta": "",
    "etaText": "",
    "dest": "",
