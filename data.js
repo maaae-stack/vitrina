@@ -1,10 +1,10 @@
 /* Generated from the internal tracker. Only client-safe fields. */
 /*DATA-START*/const DATA = {
- "rate": 82.52,
+ "rate": 82.33,
  "rubMarkup": 1.65,
- "rateDate": "2026-10-29",
+ "rateDate": "2026-10-30",
  "epsmRub": 166000.0,
- "updated": "2026-10-29T13:26:44+03:00",
+ "updated": "2026-10-30T14:00+04:00",
  "items": [
   {
    "id": "example-2",
@@ -73,7 +73,7 @@
    "model": "XMR 1000R MAX",
    "year": "2027",
    "color": "Loft Green Satin",
-   "price": 28100.0,
+   "price": 28800.0,
    "eta": "2027-01-15",
    "etaText": "",
    "dest": "",
@@ -98,7 +98,7 @@
    "model": "XMR 1000R MAX",
    "year": "2027",
    "color": "Loft Green Satin",
-   "price": 28100.0,
+   "price": 28800.0,
    "eta": "2027-01-15",
    "etaText": "",
    "dest": "",
@@ -123,7 +123,7 @@
    "model": "XMR 1000R MAX",
    "year": "2027",
    "color": "Loft Green Satin",
-   "price": 28100.0,
+   "price": 28800.0,
    "eta": "2027-01-15",
    "etaText": "",
    "dest": "",
@@ -148,7 +148,7 @@
    "model": "XMR 1000R MAX",
    "year": "2027",
    "color": "Loft Green Satin",
-   "price": 28100.0,
+   "price": 28800.0,
    "eta": "2027-01-15",
    "etaText": "",
    "dest": "",
@@ -173,7 +173,7 @@
    "model": "XMR 1000R MAX",
    "year": "2027",
    "color": "Loft Green Satin",
-   "price": 28100.0,
+   "price": 28800.0,
    "eta": "2027-01-15",
    "etaText": "",
    "dest": "",
@@ -198,7 +198,7 @@
    "model": "XMR 1000R MAX",
    "year": "2027",
    "color": "Loft Green Satin",
-   "price": 28100.0,
+   "price": 28800.0,
    "eta": "2027-01-15",
    "etaText": "",
    "dest": "",
@@ -223,7 +223,7 @@
    "model": "XMR 1000R MAX",
    "year": "2027",
    "color": "Loft Green Satin",
-   "price": 28100.0,
+   "price": 28800.0,
    "eta": "2027-01-15",
    "etaText": "",
    "dest": "",
@@ -696,6 +696,5 @@
   "per": 30.0,
   "days": 30,
   "mk": 3000.0
- },
- "rateSource": "cbr"
+ }
 };/*DATA-END*/
