@@ -79,7 +79,7 @@ const title = it => [it.make, it.model].filter(Boolean).join(" ");
 const isFree = it => !it.reserved && ["deposit", "bought", "air", "bishkek", "road", "moscow", "site"].includes(it.stage);
 function pillsHtml(it){
   const g = groupOf(it);
-  return `<div class="pills">${it.reserved ? `<span class="pill p-res">Забронировано</span>` : `<span class="pill ${g.pill}">${esc(g.t)}</span>`}${isFree(it) && !["moscow","site"].includes(it.stage) ? `<span class="pill p-free">В свободной продаже</span>` : ""}</div>`;
+  return `<div class="pills">${it.reserved ? `<span class="pill p-res">Забронировано</span>` : `<span class="pill ${g.pill}">${esc(g.t)}</span>`}${isFree(it) && !["moscow","site"].includes(it.stage) ? `<span class="pill p-free">Доступно</span>` : ""}</div>`;
 }
 function galleryHtml(it, eager){
   const imgs = it.imgs || [], alt = esc(title(it) + " " + it.year);

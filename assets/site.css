@@ -325,3 +325,18 @@ h1,h2,h3,.card h4,.desc h2{letter-spacing:-.015em;font-weight:700}
 }
 @media (min-width:1500px){.hero-photo{-webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.35) 10%,rgba(0,0,0,.75) 22%,#000 34%,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.35) 10%,rgba(0,0,0,.75) 22%,#000 34%,#000 86%,transparent 100%)}}
 @media (min-width:1500px){.hero{background:linear-gradient(270deg,var(--spruce) 0,var(--spruce) calc((100vw - 1160px)/2 - 140px),transparent calc((100vw - 1160px)/2 - 40px)),url("../img/hero-blur.jpg") center/cover no-repeat,var(--spruce)}}
+
+/* Proportions (31.10.2026): golden ratio φ ≈ 1.618 — type scale 16 / 26 / 42, spacing 26 / 42 / 68, splits 1 : 1.618. */
+h2{font-size:clamp(28px,4.2vw,42px)}
+section.block{padding:68px 0 0}
+.block .sub,.block>.wrap>p{margin-bottom:26px}
+.grid{gap:26px}
+.p-free{padding:3px 12px}
+@media (min-width:821px){
+  .hero .hero-row{grid-template-columns:minmax(0,1.618fr) minmax(0,1fr)}
+  .hero h1{font-size:clamp(34px,3.8vw,48px);max-width:none}
+  .hero .lead{max-width:none}
+  .calc-box{grid-template-columns:1.618fr 1fr}
+  .req{grid-template-columns:1fr 1.618fr;gap:26px 42px;padding:42px}
+}
+@media (min-width:861px){.model{grid-template-columns:1.618fr 1fr;gap:42px}}
