@@ -307,16 +307,19 @@ footer [data-sitename]{font-size:28px}
 h1,h2,h3,.card h4,.desc h2{letter-spacing:-.015em;font-weight:700}
 .hero h1{font-size:clamp(30px,5vw,54px);max-width:18ch}
 
-/* Hero (31.10.2026): text sits on the same solid colour as the top bar; the photo fades in smoothly towards the vehicle. */
+/* Hero (31.10.2026): solid top-bar colour behind the left half of the text block, then a long smooth fade through a blurred copy of the forest into the sharp photo. */
 @media (min-width:821px){
-  .hero{--tx:calc(max(16px,(100vw - 1160px)/2 + 16px) + 540px);background:var(--spruce)}
-  .hero-photo{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 10%);mask-image:linear-gradient(90deg,transparent 0,#000 10%)}
+  .hero{--tx:calc(max(16px,(100vw - 1160px)/2 + 16px) + 540px);background:url("../img/hero-blur.jpg") center/cover no-repeat,var(--spruce)}
+  .hero-photo{-webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.6) 12%,#000 26%);mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.6) 12%,#000 26%)}
   .hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,
-    var(--spruce) 0,var(--spruce) calc(var(--tx) - 40px),
+    var(--spruce) 0,var(--spruce) calc(var(--tx) * .5),
+    color-mix(in srgb,var(--spruce) 94%,transparent) calc(var(--tx) * .75),
     color-mix(in srgb,var(--spruce) 82%,transparent) var(--tx),
-    color-mix(in srgb,var(--spruce) 45%,transparent) calc(var(--tx) + 110px),
-    color-mix(in srgb,var(--spruce) 15%,transparent) calc(var(--tx) + 200px),
-    transparent calc(var(--tx) + 280px))}
+    color-mix(in srgb,var(--spruce) 58%,transparent) calc(var(--tx) + 120px),
+    color-mix(in srgb,var(--spruce) 32%,transparent) calc(var(--tx) + 240px),
+    color-mix(in srgb,var(--spruce) 12%,transparent) calc(var(--tx) + 340px),
+    transparent calc(var(--tx) + 430px))}
   .hero .rate{z-index:2}
 }
-@media (min-width:1500px){.hero-photo{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 10%,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 10%,#000 86%,transparent 100%)}}
+@media (min-width:1500px){.hero-photo{-webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.6) 12%,#000 26%,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.6) 12%,#000 26%,#000 86%,transparent 100%)}}
+@media (min-width:1500px){.hero{background:linear-gradient(270deg,var(--spruce) 0,var(--spruce) calc((100vw - 1160px)/2 - 140px),transparent calc((100vw - 1160px)/2 - 40px)),url("../img/hero-blur.jpg") center/cover no-repeat,var(--spruce)}}
