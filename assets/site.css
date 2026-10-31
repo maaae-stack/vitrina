@@ -340,3 +340,8 @@ section.block{padding:68px 0 0}
   .req{grid-template-columns:1fr 1.618fr;gap:26px 42px;padding:42px}
 }
 @media (min-width:861px){.model{grid-template-columns:1.618fr 1fr;gap:42px}}
+
+/* 31.10.2026: hero + route band fit in one screen; status pills stacked, «Доступно» a bit longer than «В пути». */
+@media (min-width:821px){.hero{min-height:clamp(440px,calc(100svh - var(--topbar,86px) - var(--routeband,216px)),640px)}}
+.pills{flex-direction:column;align-items:flex-start}
+.p-free{padding:3px 14px}

@@ -66,7 +66,7 @@ function groupOf(it){ return GROUPS.find(g => g.stages.includes(it.stage)) || GR
 function grouped(items){
   const map = new Map(); let n = 0;
   items.forEach(it => {
-    const canGroup = it.stage === "preorder" || it.stage === "offer";
+    const canGroup = true;
     const key = canGroup ? [it.stage, it.type, it.make, it.model, it.year, it.color, it.price, it.eta, it.etaText, it.dest, it.reserved, (it.imgs || []).join(",")].join("|") : "u" + (++n);
     if (!map.has(key)) map.set(key, {...it, qty: 0, ids: []});
     const g = map.get(key); g.qty++; g.ids.push(it.id);
