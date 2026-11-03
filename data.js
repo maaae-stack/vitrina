@@ -8,7 +8,7 @@
  "items": [
   {
    "id": "example-2",
-   "stage": "road",
+   "stage": "moscow",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R",
@@ -37,7 +37,7 @@
   },
   {
    "id": "16k3q48lka07fl7hjtyy",
-   "stage": "road",
+   "stage": "moscow",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R",
@@ -384,7 +384,7 @@
   },
   {
    "id": "offer-max-ltd-2027-1",
-   "stage": "road",
+   "stage": "moscow",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "MAX Limited 1000R",

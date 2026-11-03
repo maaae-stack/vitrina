@@ -6,7 +6,7 @@ const SELLERS = {
           lines: [{label: "Отдел продаж", phone: "+7 996 923-64-28"}, {label: "Сервисный центр", phone: "+7 996 137-38-37"}, {label: "Руководитель", phone: "+7 996 135-42-55"}]}
 };
 const GROUPS = [
-  {k: "stock", t: "В наличии", d: "Можно посмотреть и забрать", pill: "p-stock", stages: ["moscow", "site"]},
+  {k: "stock", t: "В наличии в РФ", d: "Можно посмотреть и забрать", pill: "p-stock", stages: ["moscow", "site"]},
   {k: "road",  t: "В пути", d: "Едет в Москву", pill: "p-road", stages: ["air", "bishkek", "road"]},
   {k: "ready", t: "Выкуплено", d: "Уже наше, готовится к отправке из Канады", pill: "p-road", stages: ["deposit", "bought"]},
   {k: "made",  t: "В производстве", d: "Заказано у завода, можно забронировать", pill: "p-made", stages: ["preorder"]},
@@ -53,13 +53,13 @@ function descHtml(it){
 }
 function yearStr(it){ return Number(it.year) > new Date().getFullYear() ? "Новая модель " + it.year + " года" : String(it.year || ""); }
 function eta(it){
-  if (it.stage === "moscow" || it.stage === "site") return "уже в Москве";
+  if (it.stage === "moscow" || it.stage === "site") return "в наличии в РФ";
   if (it.etaText) return it.etaText;
   if (!it.eta) return it.stage === "offer" ? "уточним при заказе" : "уточняется";
   const [y, m, d] = it.eta.split("-").map(Number);
   return (d <= 10 ? "начало " : d <= 20 ? "середина " : "конец ") + MONTHS[m - 1] + " " + y;
 }
-function where(it){ if (it.stage === "site") return it.dest === "pskov" ? "Псков" : it.dest === "tver" ? "Тверь" : "Москва"; if (it.stage === "moscow") return "Москва"; return ""; }
+function where(it){ if (it.stage === "site") return it.dest === "pskov" ? "Псков" : it.dest === "tver" ? "Тверь" : "Москва"; if (it.stage === "moscow") return "Россия"; return ""; }
 function groupOf(it){ return GROUPS.find(g => g.stages.includes(it.stage)) || GROUPS[GROUPS.length - 1]; }
 
 /* Identical preorders/offers are shown as one model with a quantity. Each group keeps the id of its first unit. */
