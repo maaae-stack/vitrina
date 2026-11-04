@@ -8,7 +8,7 @@
  "items": [
   {
    "id": "example-2",
-   "stage": "moscow",
+   "stage": "site",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R",
@@ -17,7 +17,7 @@
    "price": 26800.0,
    "eta": "2026-11-03",
    "etaText": "",
-   "dest": "",
+   "dest": "tver",
    "reserved": false,
    "imgs": [
     "img/xmr-002990-1.jpg",
@@ -37,7 +37,7 @@
   },
   {
    "id": "16k3q48lka07fl7hjtyy",
-   "stage": "moscow",
+   "stage": "site",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R",
@@ -46,7 +46,7 @@
    "price": 26800.0,
    "eta": "2026-11-03",
    "etaText": "",
-   "dest": "",
+   "dest": "pskov",
    "reserved": false,
    "imgs": [
     "img/xmr-skoro-1.jpg",
@@ -384,7 +384,7 @@
   },
   {
    "id": "offer-max-ltd-2027-1",
-   "stage": "moscow",
+   "stage": "site",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "MAX Limited 1000R",
@@ -393,7 +393,7 @@
    "price": 31000.0,
    "eta": "2026-11-03",
    "etaText": "",
-   "dest": "",
+   "dest": "pskov",
    "reserved": false,
    "imgs": [
     "img/max-ltd-2027-b-1.jpg",
