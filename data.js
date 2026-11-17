@@ -390,7 +390,7 @@
    "model": "MAX Limited 1000R",
    "year": "2027",
    "color": "Stealth Black",
-   "price": 31000.0,
+   "price": 30400,
    "eta": "2026-11-03",
    "etaText": "",
    "dest": "pskov",
