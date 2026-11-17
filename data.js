@@ -510,7 +510,7 @@
   },
   {
    "id": "bought-expedition-le-2027-1",
-   "stage": "bought",
+   "stage": "bishkek",
    "type": "Снегоход",
    "make": "SKI-DOO",
    "model": "Expedition LE 20\" 900 ACE",
@@ -539,7 +539,7 @@
   },
   {
    "id": "bought-expedition-le-2027-2",
-   "stage": "bought",
+   "stage": "bishkek",
    "type": "Снегоход",
    "make": "SKI-DOO",
    "model": "Expedition LE 20\" 900 ACE",
@@ -568,7 +568,7 @@
   },
   {
    "id": "bought-expedition-le-turbo-2027-1",
-   "stage": "bought",
+   "stage": "bishkek",
    "type": "Снегоход",
    "make": "SKI-DOO",
    "model": "Expedition LE 20\" 900 ACE Turbo R",
@@ -598,7 +598,7 @@
   },
   {
    "id": "bought-skandic-sport-2027-1",
-   "stage": "bought",
+   "stage": "bishkek",
    "type": "Снегоход",
    "make": "SKI-DOO",
    "model": "Skandic Sport 20\" 600 EFI",
@@ -626,7 +626,7 @@
   },
   {
    "id": "bought-skandic-le-2027-1",
-   "stage": "bought",
+   "stage": "bishkek",
    "type": "Снегоход",
    "make": "SKI-DOO",
    "model": "Skandic LE 20\" 900 ACE",
@@ -655,7 +655,7 @@
   },
   {
    "id": "bought-skandic-le-2027-2",
-   "stage": "bought",
+   "stage": "bishkek",
    "type": "Снегоход",
    "make": "SKI-DOO",
    "model": "Skandic LE 20\" 900 ACE",
