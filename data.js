@@ -272,7 +272,7 @@
   },
   {
    "id": "preorder-xmrx-1",
-   "stage": "preorder",
+   "stage": "bought",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R",
