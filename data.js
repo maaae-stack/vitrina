@@ -781,7 +781,7 @@
   "fin": 2.0,
   "per": 30.0,
   "days": 30,
-  "mk": 3500
+  "mk": 3000
  },
  "rateSource": "cbr"
 };/*DATA-END*/
