@@ -291,6 +291,11 @@ footer [data-sitename]{font-size:28px}
 .seg button{flex:1;font:inherit;font-weight:600;font-size:15px;min-height:44px;border:0;background:transparent;color:var(--fog);cursor:pointer;padding:8px 10px}
 .seg button+button{border-left:1.5px solid var(--line)}
 .seg button[aria-checked="true"]{background:var(--ink);color:var(--paper)}
+.seg-big button{font-size:18px;min-height:58px}
+.seg-big button[aria-checked="true"]{background:var(--signal);color:var(--signal-ink)}
+.calc-chk{display:flex;align-items:center;gap:10px;font-size:15px;cursor:pointer}
+.calc-chk input{width:20px;height:20px;accent-color:var(--signal)}
+.calc-pre{font-size:15px;color:#eef2ee;line-height:1.5}
 .calc-lbl{font-size:13px;font-weight:600;color:var(--fog)}
 .calc-price{font:inherit;font-size:24px;font-weight:600;border:1.5px solid var(--line);border-radius:8px;padding:10px 14px;background:var(--paper);color:var(--ink);width:100%;min-height:52px}
 .calc-price:focus{outline:none;border-color:var(--signal)}

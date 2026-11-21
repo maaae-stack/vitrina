@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=20261031f">
+<link rel="stylesheet" href="assets/site.css?v=20261121a">
 <link rel="icon" href="img/favicon-64.png?v=1" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=1">
 </head>
@@ -54,23 +54,30 @@
       <div class="block-h"><div><h2>Калькулятор</h2><p class="lead">Нашли технику в Канаде? Введите цену из объявления и узнайте, сколько она будет стоить с доставкой в Москву.</p></div></div>
       <div class="calc-box">
         <div class="calc-in">
+          <div class="seg seg-big" role="radiogroup" aria-label="Состояние техники">
+            <button type="button" role="radio" aria-checked="true" data-ccond="n">Новая техника</button>
+            <button type="button" role="radio" aria-checked="false" data-ccond="u">Б/У техника</button>
+          </div>
           <div class="seg" role="radiogroup" aria-label="Тип техники">
             <button type="button" role="radio" aria-checked="true" data-ctype="q">Квадроцикл</button>
             <button type="button" role="radio" aria-checked="false" data-ctype="s">Снегоход</button>
+            <button type="button" role="radio" aria-checked="false" data-ctype="m" id="calcMoto" hidden>Мотоцикл</button>
           </div>
-          <div class="seg" role="radiogroup" aria-label="Продавец">
+          <div class="seg" role="radiogroup" aria-label="Продавец" id="calcSeller">
             <button type="button" role="radio" aria-checked="true" data-cseller="d">У дилера</button>
             <button type="button" role="radio" aria-checked="false" data-cseller="p">У частного лица</button>
           </div>
-          <p class="calc-src">Выберите технику здесь: <a id="calcSrc" href="https://www.shoparide.ca/en/snowmobile/?region=montreal" target="_blank" rel="noopener">shoparide.ca ↗</a>. Выбирайте проверенного продавца со звёздочками, затем впишите цену из объявления.</p>
+          <p class="calc-src" id="calcSrcP">Выберите технику здесь: <a id="calcSrc" href="https://www.shoparide.ca/en/snowmobile/?region=montreal" target="_blank" rel="noopener">shoparide.ca ↗</a>. <span id="calcSrcTip">Выбирайте проверенного продавца со звёздочками, затем впишите цену из объявления.</span></p>
           <label class="calc-lbl" for="calcPrice">Цена в Канаде, C$ (без налогов)</label>
           <input id="calcPrice" class="calc-price num" inputmode="decimal" autocomplete="off" placeholder="например, 23 000">
+          <label class="calc-chk"><input type="checkbox" id="calcDeliv"> Нужна доставка дальше из Москвы</label>
         </div>
         <div class="calc-out" aria-live="polite">
           <div class="calc-cap">Стоимость в Москве</div>
           <div class="calc-usd num" id="calcUsd">—</div>
           <div class="calc-rub num" id="calcRub"></div>
-          <p class="calc-note">Предварительный расчёт под ключ: выкуп, доставка и растаможка. Точную цену подтвердим после проверки объявления.</p>
+          <div class="calc-pre num" id="calcPre" hidden></div>
+          <p class="calc-note" id="calcNote">Предварительный расчёт под ключ: выкуп, доставка и растаможка. Точную цену подтвердим после проверки объявления.</p>
           <button type="button" class="btn primary" id="calcAsk" hidden>Узнать точную цену</button>
         </div>
       </div>
@@ -132,7 +139,7 @@
 <div class="sheet-bg" id="sheet" hidden></div>
 
 <script src="data.js?v=20261119c"></script>
-<script src="assets/site.js?v=20261103a"></script>
+<script src="assets/site.js?v=20261121a"></script>
 <script>
 let active = "all";
 function card(it){
