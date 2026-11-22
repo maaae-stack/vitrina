@@ -1,8 +1,8 @@
 /* Shared logic for the client site. Catalog data lives in data.js (rewritten every morning from the internal tracker). */
 const SITE = {name: "Из Канады.ру", word: "Из Канады", tld: ".ру"};
 const SELLERS = {
-  pskov: {city: "Псков", name: "Лидер Авто", person: "Виктор", phone: "+7 911 355-99-66", whatsapp: "+79113559966", telegram: "+79113559966"},
-  tver:  {city: "Тверь", name: "Сервис Хрустовъ", person: "", phone: "+7 996 923-64-28", whatsapp: "+79969236428", telegram: "+79969236428",
+  pskov: {city: "Псков", name: "Лидер Авто", person: "Виктор", phone: "+7 911 355-99-66", whatsapp: "+79113559966", telegram: "+79113559966", max: "+7 911 355-99-66"},
+  tver:  {city: "Тверь", name: "Сервис Хрустовъ", person: "", phone: "+7 996 923-64-28", whatsapp: "+79969236428", telegram: "+79969236428", max: "+7 996 135-42-55", maxLabel: "руководитель",
           lines: [{label: "Отдел продаж", phone: "+7 996 923-64-28"}, {label: "Сервисный центр", phone: "+7 996 137-38-37"}, {label: "Руководитель", phone: "+7 996 135-42-55"}]}
 };
 const GROUPS = [
@@ -127,8 +127,8 @@ function sellerBlock(key, text){
   const s = SELLERS[key];
   return `<div class="seller"><div class="who">${esc(sellerTitle(s))}</div><div class="where">${esc(s.city)}</div>
     ${sellerLines(s).map(l => `<div class="tel">${l.label ? `<span class="lbl">${esc(l.label)}</span>` : ""}<a class="num" href="${telHref(l.phone)}">${esc(l.phone)}</a><button class="btn" type="button" data-copy="${esc(l.phone)}">Скопировать</button></div>`).join("")}
-    <div class="row"><a class="btn primary" href="https://wa.me/${digits(s.whatsapp)}?text=${encodeURIComponent(text)}" target="_blank" rel="noopener">WhatsApp</a><a class="btn" href="${tgHref(s)}" target="_blank" rel="noopener">Telegram</a></div>
-    ${s.lines && s.lines.length > 1 ? `<div class="where" style="margin-top:6px">WhatsApp и Telegram — ${esc(s.lines[0].label.toLowerCase())}</div>` : ""}</div>`;
+    <div class="row"><a class="btn primary" href="https://wa.me/${digits(s.whatsapp)}?text=${encodeURIComponent(text)}" target="_blank" rel="noopener">WhatsApp</a><a class="btn" href="${tgHref(s)}" target="_blank" rel="noopener">Telegram</a>${s.max ? `<button class="btn" type="button" data-max="${esc(s.max)}">Max</button>` : ""}</div>
+    ${s.lines && s.lines.length > 1 ? `<div class="where" style="margin-top:6px">WhatsApp и Telegram — ${esc(s.lines[0].label.toLowerCase())}${s.max ? ", Max — " + esc(s.maxLabel || "") : ""}</div>` : ""}</div>`;
 }
 function openSheet(heading, sub, text){
   const el = document.getElementById("sheet");
@@ -146,6 +146,8 @@ function openSheet(heading, sub, text){
   el.onclick = async e => {
     if (e.target === el || e.target.closest("[data-close]")) return close();
     if (e.target.closest("[data-other]")) { const c = CITY; CITY = ""; close(); openSheet(heading, sub, text); CITY = c; return; }
+    const mx = e.target.closest("[data-max]");
+    if (mx) { toast(await copyText(mx.dataset.max) ? "Номер скопирован: найдите его в Max" : "Max: " + mx.dataset.max); return; }
     const cp = e.target.closest("[data-copy]");
     if (cp) { toast(await copyText(cp.dataset.copy) ? "Номер скопирован" : cp.dataset.copy); }
   };
@@ -163,7 +165,7 @@ function frame(){
   document.querySelectorAll("[data-sitename]").forEach(el => el.innerHTML = `<span class="w">${esc(SITE.word)}</span><span class="t">${esc(SITE.tld)}</span>`);
   const ct = document.getElementById("cityToggle"); if (ct) ct.innerHTML = cityToggle();
   const f = document.getElementById("footSellers");
-  if (f) f.innerHTML = Object.values(SELLERS).map(s => `<div><h3>${esc(s.city)}</h3><p>${esc(sellerTitle(s))}</p>${sellerLines(s).map(l => `<p>${l.label ? `<span class="flbl">${esc(l.label)}</span><br>` : ""}<a class="tel num" href="${telHref(l.phone)}">${esc(l.phone)}</a></p>`).join("")}<p>${s.lines && s.lines.length > 1 ? "WhatsApp и Telegram — " + esc(s.lines[0].label.toLowerCase()) : "WhatsApp и Telegram на этом же номере"}</p></div>`).join("");
+  if (f) f.innerHTML = Object.values(SELLERS).map(s => `<div><h3>${esc(s.city)}</h3><p>${esc(sellerTitle(s))}</p>${sellerLines(s).map(l => `<p>${l.label ? `<span class="flbl">${esc(l.label)}</span><br>` : ""}<a class="tel num" href="${telHref(l.phone)}">${esc(l.phone)}</a></p>`).join("")}<p>${s.lines && s.lines.length > 1 ? "WhatsApp и Telegram — " + esc(s.lines[0].label.toLowerCase()) + (s.max ? ", Max — " + esc(s.maxLabel || "") : "") : (s.max ? "WhatsApp, Telegram и Max на этом же номере" : "WhatsApp и Telegram на этом же номере")}</p></div>`).join("");
   const u = document.getElementById("updated"); if (u) u.textContent = updatedLine();
 }
 

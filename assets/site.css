@@ -387,3 +387,22 @@ section.block{padding:68px 0 0}
 .uc.rv.in .uc-stripe{transform:skewX(-24deg) scaleX(1);transition:transform .8s cubic-bezier(.2,.7,.2,1) calc(var(--rd,0ms) + 180ms)}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
 .uc-fam.is-long{font-size:clamp(32px,4vw,40px)}
+
+/* Обещания и юридическое */
+.promise{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.promise li{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--signal);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.promise b{font-family:var(--f-head);font-size:20px;line-height:1.15}
+.promise span{font-size:15px;color:var(--fog)}
+.req .agree{flex-direction:row;align-items:flex-start;gap:10px;font-size:14px;color:#c9cdd3}
+.req .agree input{width:20px;height:20px;min-height:0;margin:1px 0 0;flex:none;accent-color:var(--signal)}
+.req .agree a{color:#fff}
+.legal-foot{margin-top:18px;display:flex;flex-direction:column;gap:6px}
+.legal-foot a{color:inherit}
+main.legal{padding:32px 0 56px}
+main.legal .wrap{max-width:760px}
+main.legal h1{font-size:clamp(28px,4vw,38px);margin:8px 0 6px}
+main.legal h2{font-size:20px;margin:26px 0 8px}
+main.legal p,main.legal li{font-size:16px;line-height:1.6}
+main.legal mark{background:#fff2b8;color:#1f2328;padding:0 3px;border-radius:3px}
+main.legal .back{font-weight:600}
+.legal-foot .small{margin:0}

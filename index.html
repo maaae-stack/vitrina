@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@1,800&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=20261122b">
+<link rel="stylesheet" href="assets/site.css?v=20261122d">
 <link rel="icon" href="img/favicon-64.png?v=1" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=1">
 </head>
@@ -102,6 +102,11 @@
         <li><h3>Авиа до Алматы, затем Бишкек</h3><p>Самолётом в Алматы, оттуда в Бишкек: там приёмка и растаможка.</p></li>
         <li><h3>Получение в Москве</h3><p>Передаём технику в Москве, по желанию с ЭПСМ. Если нужно дальше, скажите куда, и мы посчитаем доставку отдельно.</p></li>
       </ol>
+      <ul class="promise">
+        <li><b>Около месяца</b><span>самолётом от выкупа в Канаде до Москвы</span></li>
+        <li><b>Фото и видео</b><span>техники на каждом этапе пути: склад в Канаде, Алматы, Бишкек, Москва</span></li>
+        <li><b>Цены открыто</b><span>в долларах и рублях по курсу дня, без «узнайте цену у менеджера»</span></li>
+      </ul>
     </div>
   </section>
 
@@ -130,6 +135,7 @@
           <label>Что ищете<select name="kind"><option>Квадроцикл</option><option>Двухместный квадроцикл</option><option>Багги (SSV)</option><option>Снегоход</option><option>Гидроцикл</option><option>Пока не знаю</option></select></label>
           <label>Бюджет, $<input name="budget" inputmode="numeric" placeholder="например, 28 000"></label>
           <label class="full">Пожелания или ссылка на технику<textarea name="wish" placeholder="Модель, цвет, для чего: охота, рыбалка, катание вдвоём…"></textarea></label>
+          <label class="full agree"><input type="checkbox" name="agree" required> <span>Соглашаюсь на <a href="consent.html" target="_blank">обработку персональных данных</a> и с <a href="privacy.html" target="_blank">политикой конфиденциальности</a></span></label>
           <div class="send"><button class="btn primary" type="submit" data-via="wa">Отправить в WhatsApp</button><button class="btn" type="submit" data-via="tg">Отправить в Telegram</button><span class="hint" id="reqHint"></span></div>
         </form>
       </div>
@@ -140,7 +146,13 @@
 <footer>
   <div class="wrap">
     <div class="cols"><div><h3 data-sitename></h3><p>Квадроциклы, багги, снегоходы, гидроциклы и мотоциклы из Канады. Цены за технику в Москве.</p></div><div id="footSellers" style="display:contents"></div></div>
-    <p class="small">Названия марок и моделей принадлежат их владельцам и используются только для описания техники.</p>
+    <div class="legal-foot">
+      <p class="small">Информация на сайте носит справочный характер и не является публичной офертой (ст. 437 ГК РФ). Цены, курс и наличие уточняйте у менеджера.</p>
+      <p class="small">Ski-Doo, Lynx, Can-Am, Sea-Doo, Rotax и BRP — товарные знаки BRP Inc. Yamaha — товарный знак Yamaha Motor Co., Ltd. Мы не являемся официальным дилером этих марок; названия и логотипы используются только для описания техники.</p>
+      <p class="small">Раздел «Б/У из Канады» составлен по объявлениям третьих лиц на autotrader.ca; фотографии в объявлениях принадлежат их авторам. Наличие и цену уточняем у продавца после заявки.</p>
+      <p class="small">© Из Канады.ру, 2025–2026. Тексты, дизайн и собственные фотографии сайта принадлежат Из Канады.ру.</p>
+      <p class="small"><a href="privacy.html">Политика конфиденциальности</a> · <a href="consent.html">Согласие на обработку персональных данных</a></p>
+    </div>
   </div>
 </footer>
 <div class="toast" id="toast" hidden></div>
@@ -148,7 +160,7 @@
 
 <script src="data.js?v=20261119c"></script>
 <script src="used.js?v=20261122d"></script>
-<script src="assets/site.js?v=20261122f"></script>
+<script src="assets/site.js?v=20261122g"></script>
 <script>
 let active = "all";
 function card(it){
@@ -217,6 +229,7 @@ document.getElementById("reqForm").addEventListener("submit", e => {
   e.preventDefault();
   const f = e.target, v = k => f.elements[k].value.trim();
   if (!v("name")) { document.getElementById("reqHint").textContent = "Напишите, как к вам обращаться"; f.elements.name.focus(); return; }
+  if (!f.elements.agree.checked) { document.getElementById("reqHint").textContent = "Отметьте согласие на обработку данных"; f.elements.agree.focus(); return; }
   const s = SELLERS[v("city")]; setCity(v("city"));
   const text = `Здравствуйте! Меня зовут ${v("name")}. Ищу: ${v("kind")}.` + (v("budget") ? ` Бюджет: ${v("budget")} $.` : "") + (v("wish") ? (/https?:\/\/\S+/.test(v("wish")) ? ` Хочу выкупить эту технику: ${v("wish")}` : ` ${v("wish")}`) : "");
   const via = (e.submitter && e.submitter.dataset.via) || "wa";
