@@ -8,8 +8,8 @@
 <meta name="description" content="Новые квадроциклы, багги, снегоходы, гидроциклы и мотоциклы из Канады. Цены за технику в Москве, в долларах и рублях по курсу на сегодня.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=20261121a">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@1,800&display=swap">
+<link rel="stylesheet" href="assets/site.css?v=20261122b">
 <link rel="icon" href="img/favicon-64.png?v=1" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=1">
 </head>
@@ -17,7 +17,7 @@
 <header class="top">
   <div class="wrap">
     <a class="logo" href="./"><img class="logo-img" src="img/logo-header.png?v=1" alt="Из Канады.ру" width="157" height="60"></a>
-    <nav class="topnav" aria-label="Разделы"><a href="#catalog">Техника</a><a href="#calc">Калькулятор</a><a href="#how">Как мы работаем</a><a href="#faq">Вопросы</a><a href="#request">Заявка</a></nav>
+    <nav class="topnav" aria-label="Разделы"><a href="#catalog">Техника</a><a href="#calc">Калькулятор</a><a href="#used">Б/У из Канады</a><a href="#how">Как мы работаем</a><a href="#faq">Вопросы</a><a href="#request">Заявка</a></nav>
     <div id="cityToggle"></div>
   </div>
 </header>
@@ -80,6 +80,18 @@
     </div>
   </section>
 
+  <section class="block" id="used" hidden>
+    <div class="wrap">
+      <div class="block-h"><div><h2>Б/У из Канады</h2><p class="lead">Снегоходы Ski-Doo и Lynx 2022–2026 и Yamaha 2020–2025 годов с небольшим пробегом и ценой ниже похожих объявлений. Подборку обновляем каждые 2 дня: проданные убираем, новые добавляем. Наличие у продавца уточним сразу после вашей заявки.</p></div></div>
+      <div class="uc-filters">
+        <nav class="filter" id="ucBrand" aria-label="Марка"></nav>
+        <nav class="filter" id="ucKind" aria-label="Тип снегохода"></nav>
+      </div>
+      <div class="uc-grid" id="usedList"></div>
+      <p class="updated" id="usedUpd"></p>
+    </div>
+  </section>
+
   <section class="block" id="how">
     <div class="wrap">
       <div class="block-h"><div><h2>Как мы работаем</h2><p class="lead">От выбора модели до получения техники.</p></div></div>
@@ -135,7 +147,8 @@
 <div class="sheet-bg" id="sheet" hidden></div>
 
 <script src="data.js?v=20261119c"></script>
-<script src="assets/site.js?v=20261122b"></script>
+<script src="used.js?v=20261122c"></script>
+<script src="assets/site.js?v=20261122e"></script>
 <script>
 let active = "all";
 function card(it){

@@ -233,3 +233,70 @@ document.addEventListener("load", e => { const t = e.target; if (t && t.tagName 
     openSheet("Точная цена", kind[0].toUpperCase() + kind.slice(1) + ", " + outU.textContent, text);
   });
 })();
+
+/* Used snowmobiles from Canada (USED from used.js): listing price in C$ -> turnkey price in Moscow */
+(function(){
+  const box = document.getElementById("used");
+  if (typeof USED === "undefined" || !box || !USED.items || !USED.items.length) return;
+  const C = DATA.calc || {}, R = Object.assign({tax: 15, taxPriv: 10, yul: 1500, air: 4150, ab: 650, cust: 3000, mk: 1000}, USED.calc || {});
+  const buy = C.buy || 1.42, airR = C.airR || 1.42;
+  const total = (p, priv) => Math.ceil((p * (1 + (priv ? R.taxPriv : R.tax) / 100) / buy + R.yul / airR + R.air / airR + R.ab + R.cust + R.mk) / 100) * 100;
+  const KIND = {tour: "Туристический", mount: "Горный", sport: "Спортивный", cross: "Кроссовер", util: "Утилитарный"};
+  const KINDS = {tour: "Туристические", mount: "Горные", sport: "Спортивные", cross: "Кроссоверы", util: "Утилитарные"};
+  const PROV = {QC: "Квебек", ON: "Онтарио"};
+  const items = USED.items.map(it => Object.assign({}, it, {total: total(it.price, it.priv)})).sort((a, b) => a.total - b.total);
+  let brand = "", kind = "";
+  const rub = t => DATA.rate ? "≈ " + fmt(Math.round(t * DATA.rate / 1000) * 1000) + " ₽" : "";
+  const card = (it, i) => `<article class="uc" style="--i:${i}">
+      <a class="uc-plate ${it.brand === "Yamaha" ? "is-yam" : "is-brp"}" href="${esc(it.url)}" target="_blank" rel="noopener" aria-label="${esc(it.make + " " + it.fam + " " + it.trim)}: фото в объявлении">
+        <span class="uc-stripe" aria-hidden="true"></span>
+        <span class="uc-kind">${esc(KIND[it.kind] || "")}</span>
+        <span class="uc-year num">${it.year}</span>
+        <span class="uc-fam${it.fam.length > 9 ? " is-long" : ""}">${esc(it.fam)}</span>
+        <span class="uc-trim">${esc(it.make)} ${esc(it.trim)}</span>
+        <span class="uc-photo">Фото в объявлении ↗</span>
+      </a>
+      <div class="uc-body">
+        <div class="uc-price"><span class="uc-usd num">${fmt(it.total)} $</span><span class="uc-rub num">${rub(it.total)} под ключ в Москве</span></div>
+        <dl class="uc-spec"><div><dt>Пробег</dt><dd class="num">${fmt(it.km)} км</dd></div><div><dt>Мотор</dt><dd>${esc(it.engine || "")}</dd></div></dl>
+        <p class="uc-note">${esc(it.note || "")}</p>
+        <p class="uc-where">В Канаде <b class="num">${fmt(it.price)} C$</b>, ${esc(it.city)}, ${esc(PROV[it.prov] || it.prov)}</p>
+        <div class="uc-act"><button class="btn primary" type="button" data-used="${esc(it.id)}">Хочу этот</button></div>
+      </div>
+    </article>`;
+  const chips = (el, list, cur, attr) => { el.innerHTML = list.map(([v, t, n]) => `<button type="button" ${attr}="${v}" aria-pressed="${v === cur}">${esc(t)} <span class="num">${n}</span></button>`).join(""); };
+  function render(){
+    const byBrand = items.filter(x => !brand || x.brand === brand);
+    chips(document.getElementById("ucBrand"), [["", "Все марки", items.length], ["BRP", "Ski-Doo и Lynx", items.filter(x => x.brand === "BRP").length], ["Yamaha", "Yamaha", items.filter(x => x.brand === "Yamaha").length]], brand, "data-ub");
+    const kinds = Object.keys(KINDS).filter(k => byBrand.some(x => x.kind === k));
+    if (kind && !kinds.includes(kind)) kind = "";
+    chips(document.getElementById("ucKind"), [["", "Любой тип", byBrand.length], ...kinds.map(k => [k, KINDS[k], byBrand.filter(x => x.kind === k).length])], kind, "data-uk");
+    document.getElementById("usedList").innerHTML = byBrand.filter(x => !kind || x.kind === kind).map(card).join("");
+  }
+  render();
+  const d = String(USED.updated || "").split("-");
+  document.getElementById("usedUpd").textContent = d.length === 3 ? `Подборка обновлена ${d[2]}.${d[1]}.${d[0]}. Цена под ключ включает выкуп с налогом, доставку до Москвы и растаможку. Наличие у продавца проверим перед покупкой.` : "";
+  box.hidden = false;
+  box.addEventListener("click", e => {
+    const b = e.target.closest("[data-ub]"); if (b){ brand = b.dataset.ub; render(); return; }
+    const k = e.target.closest("[data-uk]"); if (k){ kind = k.dataset.uk; render(); return; }
+    const u = e.target.closest("[data-used]"); if (!u) return;
+    const it = items.find(x => x.id === u.dataset.used); if (!it) return;
+    openSheet("Б/У из Канады", it.make + " " + it.fam + " " + it.trim + ", " + it.year + ", " + fmt(it.total) + " $",
+      "Здравствуйте! Интересует б/у снегоход с сайта: " + it.make + " " + it.fam + " " + it.trim + ", " + it.year + " г., " + fmt(it.km) + " км, " + fmt(it.total) + " $ под ключ в Москве. Объявление: " + it.url);
+  });
+})();
+
+/* Scroll reveal: cards and list items fade up the first time they enter the screen */
+(function(){
+  if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const SEL = ".card, .uc, .steps li, .faq details, .block-h, .calc-box";
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin: "0px 0px -8% 0px", threshold: 0.08});
+  const scan = root => (root.querySelectorAll ? root : document).querySelectorAll(SEL).forEach((el, i) => {
+    if (el.dataset.rv) return; el.dataset.rv = 1;
+    const r = el.getBoundingClientRect(); if (r.top < innerHeight * 0.92 && r.bottom > 0 && !el.closest("#usedList, #list")) return;
+    el.classList.add("rv"); el.style.setProperty("--rd", (Array.prototype.indexOf.call(el.parentNode.children, el) % 3) * 90 + "ms"); io.observe(el);
+  });
+  scan(document);
+  new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (n.nodeType === 1){ if (n.matches && n.matches(SEL)) scan(n.parentNode); else scan(n); } }))).observe(document.body, {childList: true, subtree: true});
+})();
