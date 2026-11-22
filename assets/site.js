@@ -178,7 +178,7 @@ document.addEventListener("load", e => { const t = e.target; if (t && t.tagName 
   const C = DATA.calc, box = document.getElementById("calc");
   if (!C || !box) return;
   box.hidden = false;
-  const U = Object.assign({tax: 15, yul: 1500, airQ: 3700, airS: 4150, airM: 3100, ab: 650, custQ: 2500, custS: 3000, custM: 2500, mk: 1000, pre: 50, deliv: 20000,
+  const U = Object.assign({tax: 15, yul: 1500, airQ: 3700, airS: 4150, airM: 3100, ab: 650, custQ: 2500, custS: 3000, custM: 2500, mk: 1500, pre: 50, deliv: 20000,
     url: "https://www.autotrader.ca/snowmobiles/lst/reg_qc/cit_montreal/ot_used?cy=CA&damaged_listing=exclude&desc=0&sort=standard&ustate=N%2CU&zip=H2y1c6+Montr%C3%A9al&zipr=50&lat=45.509119&lon=-73.554666&atype=S&size=20"}, C.used || {});
   const NEW_URL = C.url || "https://www.shoparide.ca/en/snowmobile/?region=montreal";
   const MOTO_URL = C.urlMoto || "https://www.shoparide.ca/en/motorcycle/?region=montreal";
@@ -240,7 +240,7 @@ document.addEventListener("load", e => { const t = e.target; if (t && t.tagName 
 (function(){
   const box = document.getElementById("used");
   if (typeof USED === "undefined" || !box || !USED.items || !USED.items.length) return;
-  const C = DATA.calc || {}, R = Object.assign({tax: 15, taxPriv: 10, yul: 1500, air: 4150, ab: 650, cust: 3000, mk: 1000}, USED.calc || {});
+  const C = DATA.calc || {}, R = Object.assign({tax: 15, taxPriv: 10, yul: 1500, air: 4150, ab: 650, cust: 3000, mk: 1500}, USED.calc || {});
   const buy = C.buy || 1.42, airR = C.airR || 1.42;
   const total = (p, priv) => Math.ceil((p * (1 + (priv ? R.taxPriv : R.tax) / 100) / buy + R.yul / airR + R.air / airR + R.ab + R.cust + R.mk) / 100) * 100;
   const KIND = {tour: "Туристический", mount: "Горный", sport: "Спортивный", cross: "Кроссовер", util: "Утилитарный"};

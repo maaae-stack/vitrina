@@ -1,7 +1,7 @@
 /*USED-START*/const USED = {
  "updated": "2026-11-22",
  "calc": {
-  "mk": 1000,
+  "mk": 1500,
   "tax": 15,
   "taxPriv": 15
  },
