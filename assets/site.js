@@ -179,17 +179,18 @@ document.addEventListener("load", e => { const t = e.target; if (t && t.tagName 
   const U = Object.assign({tax: 15, yul: 1500, airQ: 3700, airS: 4150, airM: 3100, ab: 650, custQ: 2500, custS: 3000, custM: 2500, mk: 1000, pre: 50, deliv: 20000,
     url: "https://www.autotrader.ca/snowmobiles/lst/reg_qc/cit_montreal/ot_used?cy=CA&damaged_listing=exclude&desc=0&sort=standard&ustate=N%2CU&zip=H2y1c6+Montr%C3%A9al&zipr=50&lat=45.509119&lon=-73.554666&atype=S&size=20"}, C.used || {});
   const NEW_URL = C.url || "https://www.shoparide.ca/en/snowmobile/?region=montreal";
+  const MOTO_URL = C.urlMoto || "https://www.shoparide.ca/en/motorcycle/?region=montreal";
   let T = "q", P = "d", K = "n";
   const $id = id => document.getElementById(id);
   const inp = $id("calcPrice"), outU = $id("calcUsd"), outR = $id("calcRub"), ask = $id("calcAsk"), pre = $id("calcPre"), dv = $id("calcDeliv");
   const num = v => { const x = parseFloat(String(v || "").replace(/\s/g, "").replace(",", ".")); return isFinite(x) ? x : 0; };
   const rubOf = usd => DATA.rate ? fmt(Math.round(usd * DATA.rate / 100) * 100) + " ₽" : "";
   function total(price){
-    if (K === "u"){
+    if (K === "u" || T === "m"){
       const buy = price * (1 + U.tax / 100) / C.buy;
       const air = (T === "s" ? U.airS : T === "m" ? U.airM : U.airQ) / C.airR, yul = U.yul / C.airR;
       const cost = buy + yul + air + U.ab + (T === "s" ? U.custS : T === "m" ? U.custM : U.custQ);
-      return Math.ceil((cost + U.mk) / 100) * 100;
+      return Math.ceil((cost + (K === "u" ? U.mk : (C.mkMoto ?? 2500))) / 100) * 100;
     }
     const buy = price * (1 + (P === "p" ? C.taxP : C.taxD) / 100) / C.buy;
     const air = (T === "s" ? C.airS : C.airQ) / C.airR, yul = C.yul / C.airR, ab = T === "s" ? C.abS : C.abQ;
@@ -212,16 +213,14 @@ document.addEventListener("load", e => { const t = e.target; if (t && t.tagName 
   function seg(attr, val){ box.querySelectorAll(`[${attr}]`).forEach(b => b.setAttribute("aria-checked", String(b.getAttribute(attr) === val))); }
   function mode(){
     seg("data-ccond", K);
-    $id("calcMoto").hidden = K !== "u";
-    if (K !== "u" && T === "m"){ T = "q"; seg("data-ctype", T); }
-    const a = $id("calcSrc"); a.href = K === "u" ? U.url : NEW_URL; a.textContent = (K === "u" ? "autotrader.ca" : "shoparide.ca") + " ↗";
+    const a = $id("calcSrc"); a.href = K === "u" ? U.url : (T === "m" ? MOTO_URL : NEW_URL); a.textContent = (K === "u" ? "autotrader.ca" : "shoparide.ca") + " ↗";
     $id("calcSrcTip").textContent = K === "u" ? "Впишите цену из объявления. Перед покупкой проверим состояние и документы." : "Выбирайте проверенного продавца со звёздочками, затем впишите цену из объявления.";
     $id("calcNote").textContent = K === "u" ? "Предварительный расчёт под ключ до Москвы, со склада: выкуп, доставка и растаможка. Точную цену подтвердим после проверки объявления." : "Предварительный расчёт под ключ: выкуп, доставка и растаможка. Точную цену подтвердим после проверки объявления.";
     calc();
   }
   box.addEventListener("click", e => {
     const k = e.target.closest("[data-ccond]"); if (k){ K = k.dataset.ccond; mode(); return; }
-    const t = e.target.closest("[data-ctype]"); if (t){ T = t.dataset.ctype; seg("data-ctype", T); calc(); return; }
+    const t = e.target.closest("[data-ctype]"); if (t){ T = t.dataset.ctype; seg("data-ctype", T); mode(); return; }
     const s = e.target.closest("[data-cseller]"); if (s){ P = s.dataset.cseller; seg("data-cseller", P); calc(); }
   });
   inp.addEventListener("input", calc);
