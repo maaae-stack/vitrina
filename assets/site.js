@@ -214,7 +214,6 @@ document.addEventListener("load", e => { const t = e.target; if (t && t.tagName 
     seg("data-ccond", K);
     $id("calcMoto").hidden = K !== "u";
     if (K !== "u" && T === "m"){ T = "q"; seg("data-ctype", T); }
-    $id("calcSeller").hidden = K === "u";
     const a = $id("calcSrc"); a.href = K === "u" ? U.url : NEW_URL; a.textContent = (K === "u" ? "autotrader.ca" : "shoparide.ca") + " ↗";
     $id("calcSrcTip").textContent = K === "u" ? "Впишите цену из объявления. Перед покупкой проверим состояние и документы." : "Выбирайте проверенного продавца со звёздочками, затем впишите цену из объявления.";
     $id("calcNote").textContent = K === "u" ? "Предварительный расчёт под ключ до Москвы, со склада: выкуп, доставка и растаможка. Точную цену подтвердим после проверки объявления." : "Предварительный расчёт под ключ: выкуп, доставка и растаможка. Точную цену подтвердим после проверки объявления.";
