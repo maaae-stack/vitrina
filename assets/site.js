@@ -252,8 +252,8 @@ document.addEventListener("load", e => { const t = e.target; if (t && t.tagName 
         <span class="uc-stripe" aria-hidden="true"></span>
         <span class="uc-kind">${esc(KIND[it.kind] || "")}</span>
         <span class="uc-year num">${it.year}</span>
-        <span class="uc-fam${it.fam.length > 9 ? " is-long" : ""}">${esc(it.fam)}</span>
-        <span class="uc-trim">${esc(it.make)} ${esc(it.trim)}</span>
+        <span class="uc-fam">${esc(it.make)}</span>
+        <span class="uc-trim">${esc(it.fam)} ${esc(it.trim)}</span>
         <span class="uc-photo">Фото в объявлении ↗</span>
       </a>
       <div class="uc-body">
