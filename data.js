@@ -67,7 +67,7 @@
   },
   {
    "id": "preorder-xmr-1",
-   "stage": "preorder",
+   "stage": "bought",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R MAX",
@@ -92,7 +92,7 @@
   },
   {
    "id": "preorder-xmr-2",
-   "stage": "preorder",
+   "stage": "bought",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R MAX",
@@ -117,7 +117,7 @@
   },
   {
    "id": "preorder-xmr-3",
-   "stage": "preorder",
+   "stage": "bought",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R MAX",
@@ -142,7 +142,7 @@
   },
   {
    "id": "preorder-xmr-4",
-   "stage": "preorder",
+   "stage": "bought",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R MAX",
@@ -167,7 +167,7 @@
   },
   {
    "id": "preorder-xmr-5",
-   "stage": "preorder",
+   "stage": "bought",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R MAX",
@@ -192,7 +192,7 @@
   },
   {
    "id": "preorder-xmr-6",
-   "stage": "preorder",
+   "stage": "bought",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R MAX",
@@ -217,7 +217,7 @@
   },
   {
    "id": "preorder-xmr-7",
-   "stage": "preorder",
+   "stage": "bought",
    "type": "Квадроцикл",
    "make": "CAN-AM",
    "model": "XMR 1000R MAX",
