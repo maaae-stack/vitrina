@@ -161,7 +161,23 @@ function updatedLine(){
   const d = (DATA.updated || "").slice(0, 10).split("-");
   return d.length === 3 ? `Цены и наличие обновлены ${d[2]}.${d[1]}.${d[0]}. Курс: 1 $ = ${rateStr()} ₽.` : "";
 }
+/* Phone: contact bar fixed at the bottom of the screen */
+function contactBar(){
+  let el = document.getElementById("cbar");
+  if (!el){ el = document.createElement("div"); el.id = "cbar"; el.className = "cbar"; document.body.appendChild(el); document.body.classList.add("has-cbar");
+    el.addEventListener("click", e => { if (e.target.closest("[data-cbar]")) openSheet("Связаться с нами", "", "Здравствуйте! Пишу с сайта " + SITE.name + "."); });
+    document.addEventListener("citychange", contactBar);
+    const req = document.getElementById("request");
+    if (req && "IntersectionObserver" in window) new IntersectionObserver(es => es.forEach(x => el.classList.toggle("off", x.isIntersecting))).observe(req);
+  }
+  const keys = Object.keys(SELLERS), one = CITY ? SELLERS[CITY] : keys.length === 1 ? SELLERS[keys[0]] : null;
+  const text = encodeURIComponent("Здравствуйте! Пишу с сайта " + SITE.name + ".");
+  el.innerHTML = one
+    ? `<a class="btn primary" href="https://wa.me/${digits(one.whatsapp)}?text=${text}" target="_blank" rel="noopener">WhatsApp</a><a class="btn" href="${tgHref(one)}" target="_blank" rel="noopener">Telegram</a><a class="btn cbar-tel" href="tel:+${digits(one.phone)}" aria-label="Позвонить">Позвонить</a>`
+    : `<button class="btn primary" type="button" data-cbar>Написать продавцу</button>`;
+}
 function frame(){
+  contactBar();
   document.querySelectorAll("[data-sitename]").forEach(el => el.innerHTML = `<span class="w">${esc(SITE.word)}</span><span class="t">${esc(SITE.tld)}</span>`);
   const ct = document.getElementById("cityToggle"); if (ct) ct.innerHTML = cityToggle();
   const f = document.getElementById("footSellers");
@@ -247,22 +263,24 @@ document.addEventListener("load", e => { const t = e.target; if (t && t.tagName 
   const KINDS = {tour: "Туристические", mount: "Горные", sport: "Спортивные", cross: "Кроссоверы", util: "Утилитарные"};
   const PROV = {QC: "Квебек", ON: "Онтарио"};
   const items = USED.items.map(it => Object.assign({}, it, {total: total(it.price, it.priv)})).sort((a, b) => a.total - b.total);
-  let brand = "", kind = "";
+  let brand = "", kind = "", open = false;
+  const STEP = () => matchMedia("(max-width:640px)").matches ? 3 : 6;
+  let shown = 6;
   const rub = t => DATA.rate ? "≈ " + fmt(Math.round(t * DATA.rate / 1000) * 1000) + " ₽" : "";
-  const card = (it, i) => `<article class="uc" style="--i:${i}">
-      <a class="uc-plate ${it.brand === "Yamaha" ? "is-yam" : "is-brp"}" href="${esc(it.url)}" target="_blank" rel="noopener" aria-label="${esc(it.make + " " + it.fam + " " + it.trim)}: фото в объявлении">
-        <span class="uc-stripe" aria-hidden="true"></span>
-        <span class="uc-kind">${esc(KIND[it.kind] || "")}</span>
-        <span class="uc-year num">${it.year}</span>
-        <span class="uc-fam">${esc(it.make)}</span>
-        <span class="uc-trim">${esc(it.fam)} ${esc(it.trim)}</span>
-        <span class="uc-photo">Фото в объявлении ↗</span>
+  const TOPO = `<svg class="uc-topo" viewBox="0 0 300 180" preserveAspectRatio="none" aria-hidden="true">${Array.from({length: 9}, (_, i) => `<path d="M-10 ${30 + i * 18} C 60 ${10 + i * 18}, 110 ${55 + i * 18}, 170 ${28 + i * 18} S 270 ${8 + i * 18}, 320 ${34 + i * 18}"/>`).join("")}</svg>`;
+  const card = (it, i) => `<article class="uc${i >= shown ? " uc-more" : ""}" style="--i:${i}">
+      <a class="uc-plate" href="${esc(it.url)}" target="_blank" rel="noopener" aria-label="${esc(it.make + " " + it.fam + " " + it.trim)}: фото в объявлении">${TOPO}
+        <span class="uc-row"><span class="uc-kind">${esc(KIND[it.kind] || "")}</span><span class="uc-year num">${it.year}</span></span>
+        <span class="uc-make">${esc(it.make)}</span>
+        <span class="uc-fam${String(it.fam).length > 11 ? " is-long" : ""}">${esc(it.fam)}</span>
+        <span class="uc-trim">${esc(it.trim)}</span>
+        <span class="uc-km"><span class="uc-bar"><i style="width:${Math.max(2, Math.min(100, it.km / 50))}%"></i></span><span class="uc-kml"><span>Пробег <b class="num">${fmt(it.km)} км</b></span><span class="num">из 5 000</span></span></span>
       </a>
       <div class="uc-body">
         <div class="uc-price"><span class="uc-usd num">${fmt(it.total)} $</span><span class="uc-rub num">${rub(it.total)} под ключ в Москве</span></div>
-        <dl class="uc-spec"><div><dt>Пробег</dt><dd class="num">${fmt(it.km)} км</dd></div><div><dt>Мотор</dt><dd>${esc(it.engine || "")}</dd></div></dl>
+        ${it.engine ? `<div class="uc-chips"><span>${esc(it.engine)}</span></div>` : ""}
         <p class="uc-note">${esc(it.note || "")}</p>
-        <p class="uc-where">В Канаде <b class="num">${fmt(it.price)} C$</b>, ${esc(it.city)}, ${esc(PROV[it.prov] || it.prov)}</p>
+        <p class="uc-where">В Канаде <b class="num">${fmt(it.price)} C$</b>, ${esc(it.city)}, ${esc(PROV[it.prov] || it.prov)} · <a href="${esc(it.url)}" target="_blank" rel="noopener">фото ↗</a></p>
         <div class="uc-act"><button class="btn primary" type="button" data-used="${esc(it.id)}">Хочу этот</button></div>
       </div>
     </article>`;
@@ -273,13 +291,19 @@ document.addEventListener("load", e => { const t = e.target; if (t && t.tagName 
     const kinds = Object.keys(KINDS).filter(k => byBrand.some(x => x.kind === k));
     if (kind && !kinds.includes(kind)) kind = "";
     chips(document.getElementById("ucKind"), [["", "Любой тип", byBrand.length], ...kinds.map(k => [k, KINDS[k], byBrand.filter(x => x.kind === k).length])], kind, "data-uk");
-    document.getElementById("usedList").innerHTML = byBrand.filter(x => !kind || x.kind === kind).map(card).join("");
+    const list = byBrand.filter(x => !kind || x.kind === kind);
+    shown = open ? list.length : STEP();
+    document.getElementById("usedList").innerHTML = list.map(card).join("");
+    const more = document.getElementById("usedMore");
+    more.hidden = list.length <= STEP();
+    more.innerHTML = open ? "Свернуть" : `Показать ещё ${list.length - shown}`;
   }
   render();
   const d = String(USED.updated || "").split("-");
   document.getElementById("usedUpd").textContent = d.length === 3 ? `Подборка обновлена ${d[2]}.${d[1]}.${d[0]}. Цена под ключ включает выкуп с налогом, доставку до Москвы и растаможку. Наличие у продавца проверим перед покупкой.` : "";
   box.hidden = false;
   box.addEventListener("click", e => {
+    if (e.target.closest("#usedMore")){ open = !open; render(); if (!open) document.getElementById("usedList").scrollIntoView({block: "start"}); return; }
     const b = e.target.closest("[data-ub]"); if (b){ brand = b.dataset.ub; render(); return; }
     const k = e.target.closest("[data-uk]"); if (k){ kind = k.dataset.uk; render(); return; }
     const u = e.target.closest("[data-used]"); if (!u) return;

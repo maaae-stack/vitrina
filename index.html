@@ -5,11 +5,21 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>Из Канады.ру — квадроциклы, багги, снегоходы, гидроциклы и мотоциклы, цены в Москве</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Из Канады.ру">
+<meta property="og:title" content="Из Канады.ру — квадроциклы, багги, снегоходы, гидроциклы и мотоциклы, цены в Москве">
+<meta property="og:description" content="Новые квадроциклы, багги, снегоходы, гидроциклы и мотоциклы из Канады. Цены за технику в Москве, в долларах и рублях по курсу на сегодня.">
+<meta property="og:url" content="https://izkanady.ru/">
+<meta property="og:image" content="https://izkanady.ru/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Новые квадроциклы, багги, снегоходы, гидроциклы и мотоциклы из Канады. Цены за технику в Москве, в долларах и рублях по курсу на сегодня.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@1,800&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=20261122d">
+<link rel="stylesheet" href="assets/site.css?v=20261123u">
 <link rel="icon" href="img/favicon-64.png?v=1" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=1">
 </head>
@@ -88,6 +98,7 @@
         <nav class="filter" id="ucKind" aria-label="Тип снегохода"></nav>
       </div>
       <div class="uc-grid" id="usedList"></div>
+      <button class="more-btn" type="button" id="usedMore" hidden></button>
       <p class="updated" id="usedUpd"></p>
     </div>
   </section>
@@ -160,9 +171,11 @@
 
 <script src="data.js?v=20261123z"></script>
 <script src="used.js?v=20261122e"></script>
-<script src="assets/site.js?v=20261122h"></script>
+<script src="assets/site.js?v=20261123u"></script>
 <script>
 let active = "all";
+const openGrp = new Set();
+const grpLimit = () => matchMedia("(max-width:640px)").matches ? 2 : 3;
 function card(it){
   const w = where(it);
   return `<article class="card">
@@ -192,7 +205,7 @@ function render(){
     if (!groups.length) return "";
     const H = many ? "h4" : "h3";
     return `<section class="kind" id="kind-${x.k.k}">${many ? `<h3>${KIND_ICON[x.k.k] || ""}${esc(x.k.t)}</h3>` : ""}` +
-      groups.map(y => `<section class="grp"><div class="grp-h"><${H}>${esc(y.g.t)}</${H}><p>${esc(y.g.d)}</p></div><div class="grid">${y.items.map(card).join("")}</div></section>`).join("") + `</section>`;
+      groups.map(y => { const key = x.k.k + ":" + y.g.k, lim = (active !== "all" || openGrp.has(key)) ? y.items.length : grpLimit(), rest = y.items.length - lim; return `<section class="grp"><div class="grp-h"><${H}>${esc(y.g.t)}</${H}><p>${esc(y.g.d)}</p></div><div class="grid">${y.items.slice(0, lim).map(card).join("")}</div>${rest > 0 ? `<button class="more-btn" type="button" data-more="${key}">Показать все: ${y.items.length}</button>` : (openGrp.has(key) && active === "all" ? `<button class="more-btn" type="button" data-more="${key}">Свернуть</button>` : "")}</section>`; }).join("") + `</section>`;
   }).join("");
   document.getElementById("list").innerHTML = html || `<p class="lead">Сейчас обновляем список. Оставьте заявку ниже, и мы подберём технику.</p>`;
 }
@@ -224,6 +237,7 @@ document.getElementById("kinds").addEventListener("click", e => {
   window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - top, behavior: "smooth"});
 });
 document.getElementById("filter").addEventListener("click", e => { const b = e.target.closest("[data-f]"); if (!b) return; active = b.dataset.f; render(); });
+document.getElementById("list").addEventListener("click", e => { const b = e.target.closest("[data-more]"); if (!b) return; const k = b.dataset.more, sec = b.closest(".grp"); openGrp.has(k) ? openGrp.delete(k) : openGrp.add(k); render(); if (!openGrp.has(k)) { const t = document.querySelector(`[data-more="${k}"]`); (t ? t.closest(".grp") : sec)?.scrollIntoView({block: "start"}); } });
 document.getElementById("list").addEventListener("click", e => { const b = e.target.closest("[data-ask]"); if (b) askAbout(findModel(b.dataset.ask)); });
 document.getElementById("reqForm").addEventListener("submit", e => {
   e.preventDefault();
