@@ -233,7 +233,9 @@ footer .flbl{font-size:13px;opacity:.75}
 .hero .hero-row{position:static}
 .hero .hero-row>div:first-child{position:relative;z-index:1}
 .hero .rate{position:absolute;z-index:2;top:16px;right:max(16px,calc((100vw - 1160px)/2 + 16px));min-width:0;padding:10px 16px;background:rgba(31,35,40,.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-.hero .rate .v{font-size:32px}
+.hero .rate .v{font-size:22px}
+.hero .rate{padding:7px 12px;border-width:1px;border-color:rgba(253,190,0,.55);border-radius:10px;background:rgba(31,35,40,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.hero .rate .l{font-size:12px;margin-top:3px;color:rgba(255,255,255,.78)}
 .hero h1,.hero .lead{text-shadow:0 1px 12px rgba(0,0,0,.35)}
 .route-band{background:var(--spruce);color:#eef2ee;padding:26px 0 30px;border-top:1px solid rgba(253,190,0,.25)}
 .route-band .route{margin-top:0}
@@ -243,8 +245,9 @@ footer .flbl{font-size:13px;opacity:.75}
     url("../img/hero-mobile.jpg") center top/100% auto no-repeat, var(--spruce)}
   .hero-photo{display:none}
   .hero .hero-row{grid-template-columns:1fr}
-  .hero .rate{position:static;justify-self:start;padding:14px 18px}
-  .hero .rate .v{font-size:40px}
+  .hero .rate{position:absolute;top:12px;right:12px;padding:6px 10px}
+  .hero .rate .v{font-size:18px}
+  .hero .rate .l{font-size:11px}
 }
 
 /* Wordmark: the domain itself is the name. */
