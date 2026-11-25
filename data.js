@@ -578,7 +578,7 @@
    "eta": "2026-11-27",
    "etaText": "",
    "dest": "",
-   "reserved": false,
+   "reserved": true,
    "imgs": [
     "img/expedition-turbo-2027-w1.jpg",
     "img/expedition-turbo-2027-w2.jpg",
